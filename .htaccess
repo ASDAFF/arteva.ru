@@ -1,0 +1,41 @@
+Options -Indexes
+ErrorDocument 404 /404.php
+
+#php_flag allow_call_time_pass_reference 1
+#php_flag session.use_trans_sid off
+
+#php_value display_errors 1
+
+#php_value mbstring.func_overload 2
+#php_value mbstring.internal_encoding UTF-8
+
+<IfModule mod_rewrite.c>
+  Options +FollowSymLinks
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !/bitrix/urlrewrite.php$
+  RewriteRule ^(.*)$ /bitrix/urlrewrite.php [L]
+  RewriteRule .*  -  [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType application/x-httpd-php .ico
+</IfModule>
+
+<IfModule mod_dir.c>
+  DirectoryIndex index.php index.html
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive on
+  ExpiresByType image/jpeg "access plus 3 day"
+  ExpiresByType image/gif "access plus 3 day"
+</IfModule>
+
+#AuthName "Protected Bitrix installer"
+#AuthType Basic
+
+#Require valid-user
+#AuthUserFile /usr/local/bitrix-rusonyx/auth.db

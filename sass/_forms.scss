@@ -1,0 +1,399 @@
+input[type=text], input[type=search], input[type=email], input[type=password], textarea{
+    width: 100%;
+    height: 32px;
+    background: #fff;
+    border:1px solid #8e8e8e;
+    padding:0 12px;
+    @include avreg;
+    @include font(#353636, 11px, inherit);
+    @include box-sizing(border-box);
+    @include transition(border-color 0.2s);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    &:disabled {
+        border:1px solid #ccc;
+    }
+    &:focus {
+        border-color: $cBlack;
+        outline: none;
+    }
+    &::-webkit-input-placeholder {
+        color: #b1b1b1;
+    }
+    &:-moz-placeholder {
+        color: #b1b1b1;
+    }
+    &:-ms-input-placeholder {
+        color: #b1b1b1;
+    }
+    .parsley-error & {
+        border-color:#f21025;
+    }
+}
+
+textarea {
+    resize: none;
+    height: 160px;
+    @include arialreg;
+    font-style: italic;
+    @include font($cBlack, 11px, 18px);
+    letter-spacing: 0;
+    text-transform: none;
+    padding: 12px;
+
+    &::-webkit-input-placeholder {
+        color: #b1b1b1;
+    }
+    &:-moz-placeholder {
+        color: #b1b1b1;
+    }
+    &:-ms-input-placeholder {
+        color: #b1b1b1;
+    }
+}
+
+button, input[type=submit], .btn {
+    @include avreg;
+    @include font(#000, 10px, 1);
+    padding: 12px 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border:1px solid $cBlack;
+    background:$cWhite;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    @include border-radius(3px);
+    @include transition(color 0.2s ease, background-color 0.2s ease);
+    -webkit-appearance: none;
+
+    overflow: hidden;
+    position: relative;
+    &:visited {
+        text-decoration: none;
+        color:$cBlack;
+        background: $cWhite;
+    }
+    &:hover {
+        text-decoration: none;
+        color:$cWhite;
+        background-color: $cBlack;
+    }
+    &:disabled, &.disabled {
+        background: #f6f6f6;
+        border-color:#7f7f7f;
+        color:#c0c0c0;
+    }
+
+    &.small-btn {
+        height:24px;
+        line-height: 24px;
+        padding:0 12px;
+        font-size: 10px;
+        +.small-btn {
+            margin-left: 20px;
+        }
+    }
+    &.busy {
+        position: relative;
+        overflow: hidden;
+        &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: $cWhite url('/img/preloader_btn.gif') 50% 50% no-repeat;
+        }
+    }
+    &.important {
+        background-color: $cBlack;
+        color: $cWhite;
+        &:hover {
+            color: $cBlack;
+            background-color: $cWhite;
+        }
+        &:visited {
+            text-decoration: none;
+            color:$cWhite;
+            background: $cBlack;
+        }
+        &.disabled, .loading & {
+            background: #ccc;
+            border-color:#7f7f7f;
+            color:#666;
+            &:hover {
+                cursor: default;
+            }
+        }
+        &.busy {
+            &:after {
+                background: $cBlack url('/img/preloader_btn_important.gif') 50% 50% no-repeat;
+            }
+        }
+    }
+}
+
+input[type=checkbox].css-checkbox, input[type=radio].css-checkbox {
+    position: absolute;
+    z-index: -1;
+}
+
+input[type=checkbox].css-checkbox + label.cb-label,
+input[type=radio].css-checkbox + label.cb-label {
+    padding-left:30px;
+    display:inline-block;
+    background-repeat:no-repeat;
+    vertical-align:middle;
+    cursor:pointer;
+}
+
+input[type=checkbox].css-checkbox + label.cb-label {
+    &:before {
+        background-position: -100px -200px;
+    }
+    &:hover {
+        &:before {
+            background-position: -100px -250px;
+        }
+    }
+    &:active {
+        &:before {
+            background-position: -100px -250px;
+        }
+    }
+}
+
+input[type=checkbox].css-checkbox:disabled + label.cb-label {
+    &:before {
+        background-position: -100px -250px;
+    }
+
+}
+
+input[type=radio].css-checkbox + label.cb-label {
+    &:before {
+        background-position: -150px -200px;
+    }
+    &:hover {
+        &:before {
+            background-position: -150px -250px;
+        }
+    }
+    &:active {
+        &:before {
+            background-position: -150px -250px;
+        }
+    }
+}
+
+input[type=radio].css-checkbox:disabled + label.cb-label {
+    &:before {
+        background-position: -150px -250px;
+    }
+}
+
+input[type=checkbox].css-checkbox:checked + label.cb-label {
+    &:before {
+        background-position: -100px -300px;
+    }
+    &:hover {
+        &:before {
+            background-position: -100px -300px;
+        }
+    }
+}
+
+input[type=checkbox].css-checkbox.checked + label.cb-label {
+    &:before {
+        background-position: -100px -300px;
+    }
+    &:hover {
+        &:before {
+            background-position: -100px -300px;
+        }
+    }
+}
+
+input[type=radio].css-checkbox:checked + label.cb-label{
+    &:before {
+        background-position: -150px -300px;
+    }
+    &:hover {
+        &:before {
+            background-position: -150px -300px;
+        }
+    }
+}
+
+input[type=radio].css-checkbox.checked + label.cb-label {
+    &:before{
+        background-position: -150px -300px;
+    }
+    &:hover{
+        &:before {
+            background-position: -150px -300px;
+        }
+    }
+}
+
+
+.common-form {
+    fieldset {
+        position: relative;
+        margin-bottom: 20px;
+        &.submit-cnt {
+            margin-bottom: 0;
+        }
+        label {
+            display: block;
+            @include avreg;
+            @include font($cBlack, 11px, 1);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        p.meta {
+            @include arialreg;
+            font-style: italic;
+            @include font(#666666, 12px, 18px);
+        }
+        p.group-header {
+            @include avbold;
+            @include font(#000, 14px, 1);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        .subfield {
+            margin-top: 10px;
+        }
+    }
+    .info {
+        @include arialreg;
+        font-style: italic;
+        @include font(#333333, 12px, 18px);
+    }
+
+    label.cb-label {
+        @include arialreg;
+        @include font($cBlack, 12px, 20px);
+        position: relative;
+        text-transform: none;
+        letter-spacing: 0;
+        margin-bottom: 0;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        &:before {
+            content:'';
+            position: absolute;
+            left:0;
+            top:0;
+            width: 20px;
+            height: 20px;
+            background-image:url('/img/spr_icons.png');
+        }
+    }
+    &.inverse {
+        fieldset {
+            label {
+                color: #fff;
+                margin-bottom: 5px;
+                text-transform: none;
+                letter-spacing: 0;
+            }
+        }
+        label.cb-label {
+            @include avreg;
+            @include font(#fff, 12px, 20px);
+        }
+
+    }
+
+    .require-msg {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 20px;
+        @include arialreg;
+        @include font(#b1b1b1, 11px, 1);
+    }
+}
+
+.add-to-spec-form {
+    .row {
+        @include pie-clearfix;
+    }
+    .col12 {
+        width: 200px;
+        margin-left: 20px;
+        float: left;
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+}
+
+.auth-form-cnt {
+    width: 380px;
+    .col12 {
+        width: 190px;
+        margin-left: 0;
+    }
+    .submit-cnt {
+        text-align: center;
+    }
+    .text-content {
+        p > a {
+            background: none;
+            text-decoration: underline;
+            &:hover {
+                color: $cBlack;
+                text-decoration: none;
+            }
+        }
+    }
+    .first-time-msg {
+        text-align: center;
+        margin-top: 30px;
+    }
+}
+
+.register-form-cnt {
+    .subfield {
+        margin-top: -15px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .auth-form-cnt {
+        width: auto;
+        .col12 {
+            width: auto;
+            margin-left: 0;
+            margin-top: 20px;
+        }
+        .submit-cnt {
+            text-align: center;
+        }
+        .text-content {
+            p > a {
+                background: none;
+                text-decoration: underline;
+                &:hover {
+                    color: $cBlack;
+                    text-decoration: none;
+                }
+            }
+        }
+        .first-time-msg {
+            text-align: center;
+            margin-top: 30px;
+        }
+    }
+}

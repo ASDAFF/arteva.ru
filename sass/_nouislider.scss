@@ -1,0 +1,60 @@
+.noUi-target {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    border:none;
+    @include box-shadow(none);
+}
+.noUi-horizontal {
+    height: 3px;
+    .noUi-handle {
+        width: 3px;
+        height: 14px;
+    }
+}
+.noUi-base {
+
+}
+.noUi-origin {
+
+}
+.noUi-handle {
+    border:none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    background: #fff;
+    @include box-shadow(none);
+    &:before, &:after {
+        display: none;
+    }
+    &.noUi-handle-lower {
+        left: 0;
+    }
+    &.noUi-handle-upper {
+        right: 3px;
+        left: auto;
+    }
+}
+.noUi-connect {
+    @include box-shadow(none);
+    background: #fff;
+}
+.noUi-background {
+    background: #999999;
+    @include box-shadow(none);
+}
+
+.noUi-state-tap {
+
+}
+
+.noUi-horizontal.noUi-extended {
+    padding-right: 32px;
+}
+.noUi-horizontal.noUi-extended .noUi-handle {
+    left: -1px;
+}
+.noUi-horizontal.noUi-extended .noUi-origin  {
+    right: -32px;
+}

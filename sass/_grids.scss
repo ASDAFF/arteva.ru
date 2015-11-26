@@ -1,0 +1,59 @@
+// Requirements
+// ============
+@import "susy";
+
+$grid960: (
+    flow: ltr,
+    math: static,
+    container: auto,
+    container-position: center,
+    columns: 12,
+    column-width: 60px,
+    gutters: 1/3,
+    gutter-position: split,
+    debug: (image: hide),
+    box-sizing: border-box
+);
+
+$desktop: (
+    flow: ltr,
+    math: static,
+    container: auto,
+    container-position: center,
+    columns: 14,
+    column-width: 75px,
+    gutters: 10/75,
+    gutter-position: before,
+    debug: (image: hide),
+    box-sizing: border-box
+);
+
+$mobile: (
+    flow: ltr,
+    math: fluid,
+    container: auto,
+    columns: 2,
+    column-width: false,
+    gutters: 1/16,
+    gutter-position: before,
+    debug: (image: hide),
+    box-sizing: border-box
+);
+
+$wide: (
+    flow: ltr,
+    math: static,
+    container: auto,
+    container-position: center,
+    columns: 10,
+    column-width: 181px,
+    gutters: 10/181,
+    gutter-position: before,
+    debug: (image: hide),
+    box-sizing: border-box
+);
+
+$grid960_layout: layout($grid960);
+$desktop_layout: layout($desktop);
+$wide_layout: layout($wide);
+$mobile_layout: layout($mobile);

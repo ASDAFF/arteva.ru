@@ -1,0 +1,495 @@
+.common_list{
+	width: 40%;
+    margin: 0 auto;
+	clear: both;
+}
+
+.common_list a.js-add-to-cart{
+	height: 25px;
+    padding: 0px;
+    line-height: 25px;
+	text-align: center;
+}
+
+.shadowBlock{
+	z-index: 5; 
+	box-shadow: 0 0 10px 0px #919191;
+}
+
+.shadowBlockBottom{
+	position: absolute;
+    width: 100%;
+    height: 50px;
+    top: 100%;
+    background: #ffffff;
+    margin: 0 0 0 0;
+    box-shadow: 0 0 10px 0px #919191;
+	z-index: 5;
+}
+
+.shadowBlockBottom::before{
+	position: absolute;
+    top: -10px;
+    left: 0px;
+    width: 100%;
+    height: 30px;
+    content: '';
+    background-color: #fff;
+}
+
+ul.item-cards-list .item-price span.rub{
+	font-family: als_rublregular;
+}
+
+.main-items .item-price span.rub{
+	font-family: als_rublregular;
+}
+
+.oneline{
+	float: left;
+	width: 50%;
+}
+
+.item-price.oneline{
+	text-align: right;
+	line-height: 20px;
+	padding-bottom: 7px;
+}
+
+.old-price.oneline{
+	text-align: left;
+}
+
+.twoline{
+	float: left;
+	width: 50%;
+}
+
+.item-price .twoline{
+	text-align: right;
+	line-height: 20px;
+	padding-bottom: 7px;
+}
+
+.old-price.twoline{
+	text-align: left;
+	margin-top: 0px !important;
+}
+
+/* buy-in-salon */
+.block-info a{
+	color: #ffffff;
+}
+
+/*in-design*/
+.bigger:hover{
+	/*-moz-transform: scale(1.03);
+	-ms-transform: scale(1.03);
+	-webkit-transform: scale(1.03);
+	transform: scale(1.03);*/
+	
+	/*-moz-transform: scale(0.88);
+	-ms-transform: scale(0.88);
+	-webkit-transform: scale(0.88);
+	transform: scale(0.88);
+	
+	-moz-transition: opacity 0.25s, -moz-transform 0.25s;
+	-o-transition: opacity 0.25s, -o-transform 0.25s;
+	-webkit-transition: opacity 0.25s, -webkit-transform 0.25s;
+	transition: opacity 0.25s, transform 0.25s;
+	
+	z-index: 2;
+	
+	-moz-transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;*/
+}
+
+.bigger:hover p span{
+	/*text-decoration: underline;
+	color: #ffffff;*/
+	
+	border-bottom: 1px solid #ffffff;
+	/*line-height: 26px;*/
+}
+
+/*warning-banner*/
+.warning_banner{
+    width: 1030px;
+	height: 90px;
+    margin: 10px auto;
+    /*padding-top: 13px;*/
+    background: #fff;
+    padding-bottom: 1px;
+	font-size: 18px;
+	line-height: 26px;
+	font-family: 'avantgardegothiccregular', Arial, sans-serif;
+	color: #000000;
+	text-align: center;
+	background-size: cover;
+	overflow: hidden;
+}
+
+.warning_close{
+	/*position: absolute;
+	z-index: 100;*/
+	margin-right: 45px;
+    margin-top: 18px;
+	color: #000000;
+	font-family: 'avantgardegothiccregular', Arial, sans-serif;
+	font-weight: bold;
+	font-size: 10px;
+	line-height: 10px;
+	text-transform: uppercase;
+	text-align: right;
+}
+
+.warning_open{
+	width: 1030px;
+	height: 36px;
+    margin: 10px auto;
+    background: #fff;
+    padding-bottom: 1px;
+	font-size: 10px;
+	line-height: 36px;
+	font-family: 'avantgardegothiccregular', Arial, sans-serif;
+	font-weight: bold;
+	color: #000000;
+	text-transform: uppercase;
+	text-align: right;
+	display: none;
+}
+
+.warning_close span, .warning_open span{
+	cursor: pointer;
+}
+
+.warning_open span{
+	margin-right: 45px;
+}
+
+.warning_open span:before{
+	content: url("/img/arrow_down.jpg");
+    width: 7px;
+    height: 12px;
+	color: #ffffff;
+	margin-left: -10px;
+}
+
+.fx_mb{
+	height: 0px;
+}
+
+@media screen and (max-width: 640px) {
+	.warning_banner, .warning_open{
+		max-width: 640px;
+	}
+	
+	.fx_mb{
+		height: 95px;
+	}
+	
+	.warning_banner{
+		/*background-size: contain;*/
+		height: 40px;
+	}
+}
+
+/*partners*/
+.partner_link{
+	text-decoration: none;
+	border-bottom: none !important;
+}
+
+.partner_img{
+	width: 120px;
+	height: 80px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+}
+
+/*slider bullets*/
+.main-slider-cnt .bx-controls{
+	z-index: 51;
+}
+
+.site-header{
+	z-index: 8000;
+}
+
+/*contacs*/
+#contacts-map {
+    height: 504px;
+}
+.contacts-map-cnt {
+    margin-bottom: 45px;
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+}
+.nav-container {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+     width: 50%;
+}
+.contacts-info{
+
+    width: 48%;
+    display: inline-block;
+    vertical-align: top;
+    padding: 32px 36px;
+    box-sizing:border-box;
+}
+.contacts-info .holder{
+    width:49%;
+    display:inline-block;
+    vertical-align: top;
+    
+}
+.contacts-info .holder p{
+    font-family: avantgardegothiccregular, Arial, sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    color: #000;
+    line-height: 27px;
+    margin-left:35px;
+}
+.contacts-info .holder p span{
+    padding-bottom:10px;
+    display:block;
+}
+.contacts-info  p{
+    font-family: avantgardegothiccregular, Arial, sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    color: #000;
+    line-height: 28px;
+    margin-left:35px;
+}
+.contacts-info p br{
+    display: none;
+}
+.contacts-info  p.label{
+    margin-left:0px;
+    font-size: 11px;
+    text-transform: uppercase;
+    width:45%;
+    margin: 0;
+    font-style:normal;
+}
+.contacts-info  div.hold-in{
+    width:45%;
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom:14px;
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+    text-transform: none;
+    font-style: italic;
+    font-size: 12px;
+    color: #000;
+    clear: both;
+}
+.contacts-info  div.hold-in:nth-child(3){
+    float:right;
+}
+.contacts-info  div.hold-in:nth-child(5){
+    float:right;
+}
+.contacts-info  div.hold-in:nth-child(8){
+    float:right;
+    margin-top: -108px;
+}
+.contacts-info  p span.top{
+    font-family: avantgardegothiccregular, Arial, sans-serif;
+    font-weight: normal;
+    font-size: 7px;
+    color: #000;
+    display: inline-block;
+    vertical-align: super;
+    text-decoration: underline;
+}
+.contacts-info input,.contacts-info textarea,.contacts-info div.btn{
+    width:100%;
+    display: inline-block;
+    vertical-align: top;
+}
+.contacts-info textarea{
+    height:125px;
+}
+.contacts-info div.btn{
+    background: #000;
+    border-radius: 0px;
+    padding: 0;
+    box-sizing: border-box;
+    margin-bottom:10px;
+    margin-top: 21px;
+}
+.contacts-info div.btn input{
+    background: #000;
+    color:#fff;
+}
+.contacts-info div.btn p{
+    color:#fff;
+    margin: 0;
+    text-align: center;
+    letter-spacing: 3px;
+}
+.contacts-info  p.header.small{
+    line-height: 0px;
+    margin-top: 5px;
+    padding-bottom: 0px;
+}
+.contacts-info  p.header span.small{
+    font-family: avantgardegothiccregular, Arial, sans-serif;
+    font-weight: normal;
+    font-size: 9px;
+    color: #808080;
+    display: block;
+}
+.contacts-info  p.header span.small.italic{
+    font-family:  Arial, sans-serif;
+    font-weight: normal;
+    text-transform: none;
+    font-style: italic;
+    font-size: 12px;
+    color: #000;
+    line-height: 12px;
+    letter-spacing: -1px;
+}
+.contacts-info .holder p.header.small {
+    margin-left: 35px;
+}
+.contacts-info .holder p.phone-hold{
+	position:relative;
+}
+.contacts-info .holder p.phone-hold:before{
+	    content: '';
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    left: -40px;
+    top: 2px;
+    background-image: url("/img/phone.png");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+.contacts-info .holder p.mail-hold{
+	position:relative;
+}
+.contacts-info .holder p.mail-hold:before{
+        content: '';
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    left: -40px;
+    top: 2px;
+    background-image: url("/img/mail.png");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+.contacts-info  p span{
+    font-family: avantgardegothiccbold, Arial, sans-serif;
+}
+.contacts-info .holder p a{
+    color: #000;
+}
+.contacts-info p.header {
+    font-family: avantgardegothiccbold, Arial, sans-serif;
+    font-weight: normal;
+    font-size: 18px;
+    color: #000;
+    line-height: 24px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin:7px 0 10px 0px;
+}
+@media screen and (max-width: 640px) {
+    .contacts-map-cnt {
+    width: 80%;
+    margin:0 10% 0px 10%;
+}
+.nav-container {
+    width: 100%;
+}
+.contacts-info {
+    width: 100%;
+}
+.contacts-info .holder {
+    width: 100%;
+    margin-bottom:45px;
+}
+.contacts-info>p {
+    font-family: avantgardegothiccregular, Arial, sans-serif;
+    font-weight: normal;
+    font-size: 22px;
+    color: #000;
+    line-height: 28px;
+    margin-left:0px;
+    margin-bottom:45px;
+}
+.contacts-info p.header{
+    font-size: 26px;
+}
+.contacts-info .holder p{
+    font-size: 24px;
+    line-height: 30px;
+}
+.contacts-info p br{
+    display: block;
+}
+.contacts-info .holder p:nth-child(2),.contacts-info .holder p:nth-child(3){
+    display: inline-block;
+    vertical-align: top;
+    width: 40%;
+}
+.contacts-info p.header span.small {
+    font-size: 13px;
+    padding-bottom: 15px;
+}
+.contacts-info div.hold-in {
+    width: 100%;
+}
+.contacts-info p.label {
+    font-size: 20px;
+    width: 100%;
+}
+.contacts-info input[type=text], input[type=search], input[type=email], input[type=password], textarea {
+    height: 30px;
+    font-size: 17px;
+    line-height: 26px;
+}
+.contacts-info div.btn {
+    width: 40%;
+}
+.line{
+    height: 1px;
+    width: 100%;
+    background: #e6e6e6;
+    margin:10px 0 10px 0;
+}
+.contacts-info  div.hold-in:nth-child(3){
+    float:none;
+}
+.contacts-info  div.hold-in:nth-child(5){
+    float:none;
+}
+.contacts-info  div.hold-in:nth-child(8){
+    float:none;
+    margin-top: 0px;
+}
+.contacts-info div.hold-in:last-child *{
+    display: inline-block;
+    vertical-align: top;
+}
+.contacts-info div.hold-in:last-child *:nth-child(2){
+    line-height:60px;
+    margin-left:30px;
+}
+.contacts-info div.hold-in .btn {
+    margin-top:10px;
+}
+
+}

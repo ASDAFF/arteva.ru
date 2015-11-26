@@ -1,0 +1,58 @@
+    ul.parsley-errors-list {
+        position: absolute;
+        margin-bottom: 0;
+        z-index: 1;
+        top:-15px;
+        background: #171717;
+        list-style: none;
+        left: 50%;
+        @include transform(translateX(-50%));
+        .lt-ie9 & {
+            left: 0;
+        }
+        .subscribe-form-cnt & {
+            top:inherit;
+            bottom: 48px;
+        }
+        &.filled {
+            &:before {
+                content:'';
+                position: absolute;
+                bottom:-3px;
+                left:50%;
+                margin-left: -4px;
+                width: 0px;
+                height: 0px;
+                border-style: solid;
+                border-width: 3px 3px 0 3px;
+                border-color: #171717 transparent transparent transparent;
+            }
+        }
+        > li {
+            display: block;
+            color:#fff;
+            white-space: nowrap;
+            @include avreg;
+            @include font(#fff, 9px, 14px);
+            padding:8px 13px;
+            margin-bottom: 0;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            &:before {
+                display: none;
+            }
+        }
+
+    }
+    textarea {
+        +ul.parsley-errors-list {
+            bottom: 170px;
+            .mobile & {
+                bottom: 60px;
+            }
+            .toggled & {
+                bottom: auto;
+            }
+        }
+    }

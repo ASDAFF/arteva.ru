@@ -1,0 +1,71 @@
+.fbx-header {
+    padding: 20px 25px;
+    background: #fff;
+    h2 {
+        @include neomed;
+        @include font(#323131, 18px, 1);
+        font-weight: normal;
+        text-transform: uppercase;
+    }
+}
+
+.fbx-content {
+    .subscribe-inputs-cnt {
+        padding:20px 25px 0 25px;
+
+        input[type=text],
+        input[type=search],
+        input[type=email],
+        input[type=submit],
+        .chosen-container-multi .chosen-choices {
+            vertical-align: top;
+            border:1px solid #e7e7e7;
+        }
+        .chosen-container-active .chosen-choices {
+            border:1px solid #5897fb;
+        }
+    }
+
+    .job-input-cnt {
+        &.ib {
+            width: 390px;
+            vertical-align: top;
+        }
+    }
+
+    .city-input-cnt {
+        &.ib {
+            width: 390px;
+            margin-left: 50px;
+            vertical-align: top;
+        }
+    }
+}
+
+#popup-subscribe-criteria {
+    width: 885px;
+    .advanced-search-cnt {
+        line-height: 30px;
+    }
+}
+
+#popup-subscribe-all {
+    width: 400px;
+    .job-input-cnt {
+        margin-bottom: 28px;
+    }
+    .advanced-search-inner {
+        font-size: 0;
+        fieldset {
+            vertical-align: top;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.alfa {
+    .fancybox-skin {
+        @include border-radius(2px);
+    }
+}
+

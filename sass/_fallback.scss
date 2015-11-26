@@ -1,0 +1,35 @@
+.no-csstransforms {
+    .site-sidebar {
+        .side-item {
+            &.expanded {
+                >a {
+                    &:before {
+                        background-position: -217px -7px;
+                    }
+                }
+            }
+            >a {
+                &:before {
+
+                }
+            }
+        }
+    }
+    .path-header {
+        &.expanded {
+            &:before {
+                background-position: -425px -286px;
+            }
+        }
+    }
+}
+
+.lt-ie9 {
+    .site-content {
+        .thumb-list {
+            p.caption {
+                background: #fff;
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="2015-11-16 13:07:26">
+	<shop>
+		<name>Arteva - мебель, свет, предметы интерьера</name>
+		<company>ООО НВС-груп</company>
+		<url>http://www.arteva.ru</url>
+		<platform>BITRIX</platform>
+		<version>2.3</version>
+		<agency>IT-lab</agency>
+		<email>info@arteva.ru</email>
+		<currencies>
+			<currency id="RUR" rate="1"/>
+		</currencies>
+		<categories/>
+		<offers><offer id="41077" available="true">
+				<url>http://www.arteva.ru/catalog/svetilniki/torshery/floor-afl9620-1bk/</url>
+				<price>15000.00</price>
+				<oldprice>15000.00</oldprice>
+				<sales_notes>Оплата: нал, безнал, пластиковые карты без %</sales_notes>
+				<currencyId>RUR</currencyId>
+				<categoryId>666</categoryId><picture>http://www.arteva.ru/upload/iblock/5ba/5bac8a493b73f1f48641d4e7d928db0f.jpg</picture><store>true</store>
+				<pickup>true</pickup>
+				<delivery>true</delivery>
+				<name>Дизайнерский напольный торшер Artevaluce</name>
+				<description>Бренд ARTEVALUCE&lt;BR&gt;Светильник напольный, мраморное основание, один абажур&lt;BR&gt;Цвет основания - черный, цвет абажура - черный&lt;BR&gt;&lt;BR&gt;Размер D50 см х H180 см &lt;BR&gt;Патрон E27, мощность max 1 х 60W</description>
+				<vendor>ARTEVALUCE</vendor>
+				<vendorCode>ALF9620/1 BK</vendorCode>
+				<param name="Материал">Металл</param>
+				<param name="Цвет">Черный</param>
+				<param name="Размер">стандартный</param>
+			</offer></offers></shop></yml_catalog>

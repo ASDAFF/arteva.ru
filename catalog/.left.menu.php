@@ -1,0 +1,39 @@
+<?
+$aMenuLinks = Array(
+	Array(
+		"Светильники", 
+		"/catalog/lamp/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Мебель", 
+		"/catalog/furniture/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Предметы интерьера", 
+		"/catalog/interior/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Новинки", 
+		"/catalog/new/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"SALE", 
+		"/catalog/sale/", 
+		Array(), 
+		Array(), 
+		"" 
+	)
+);
+?>

@@ -1,0 +1,108 @@
+/*
+Error: File not found or cannot be read: /Users/SKIff/www/arteva/images/icon_search_close.png
+        on line 95 of /Users/SKIff/www/arteva/sass/main.scss
+
+90:         &:before {
+91:             content:'';
+92:             display: inline-block;
+93:             width: 8px;
+94:             height: 8px;
+95:             background: inline_image('icon_search_close.png') 50% 50% no-repeat;
+96:             margin-right: 10px;
+97:             vertical-align: middle;
+98:             @include transition(background-image 0.2s);
+99:         }
+100:         &:hover {
+
+Backtrace:
+/Users/SKIff/www/arteva/sass/main.scss:95
+/Library/Ruby/Gems/1.8/gems/compass-core-1.0.1/lib/compass/core/sass_extensions/functions/inline_image.rb:60:in `data'
+/Library/Ruby/Gems/1.8/gems/compass-core-1.0.1/lib/compass/core/sass_extensions/functions/inline_image.rb:6:in `inline_image'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/script/tree/funcall.rb:139:in `send'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/script/tree/funcall.rb:139:in `_perform'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/script/tree/node.rb:50:in `perform'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/script/tree/list_literal.rb:62:in `_perform'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/script/tree/list_literal.rb:62:in `map'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/script/tree/list_literal.rb:62:in `_perform'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/script/tree/node.rb:50:in `perform'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:384:in `visit_prop'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/base.rb:36:in `send'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/stack.rb:79:in `with_base'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/stack.rb:115:in `with_frame'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/stack.rb:79:in `with_base'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:420:in `visit_rule'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:420:in `map'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:420:in `visit_rule'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:418:in `visit_rule'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/base.rb:36:in `send'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/stack.rb:79:in `with_base'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/stack.rb:115:in `with_frame'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/stack.rb:79:in `with_base'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:420:in `visit_rule'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:420:in `map'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:420:in `visit_rule'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:418:in `visit_rule'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/base.rb:36:in `send'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/stack.rb:79:in `with_base'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/stack.rb:115:in `with_frame'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/stack.rb:79:in `with_base'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:420:in `visit_rule'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:420:in `map'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:420:in `visit_rule'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:418:in `visit_rule'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/base.rb:36:in `send'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/stack.rb:79:in `with_base'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/stack.rb:115:in `with_frame'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/stack.rb:79:in `with_base'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/base.rb:52:in `map'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:167:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/base.rb:36:in `send'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:8:in `send'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/tree/root_node.rb:20:in `render'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/engine.rb:268:in `render'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/plugin/compiler.rb:491:in `update_stylesheet'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/plugin/compiler.rb:215:in `update_stylesheets'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/plugin/compiler.rb:209:in `each'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Library/Ruby/Gems/1.8/gems/sass-3.4.4/lib/sass/plugin/compiler.rb:293:in `watch'
+/Library/Ruby/Gems/1.8/gems/compass-1.0.1/lib/compass/sass_compiler.rb:46:in `watch!'
+/Library/Ruby/Gems/1.8/gems/compass-1.0.1/lib/compass/commands/watch_project.rb:41:in `perform'
+/Library/Ruby/Gems/1.8/gems/compass-1.0.1/lib/compass/commands/base.rb:18:in `execute'
+/Library/Ruby/Gems/1.8/gems/compass-1.0.1/lib/compass/commands/project_base.rb:19:in `execute'
+/Library/Ruby/Gems/1.8/gems/compass-1.0.1/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
+/Library/Ruby/Gems/1.8/gems/compass-1.0.1/lib/compass/exec/sub_command_ui.rb:15:in `run!'
+/Library/Ruby/Gems/1.8/gems/compass-1.0.1/bin/compass:30
+/Library/Ruby/Gems/1.8/gems/compass-1.0.1/bin/compass:44:in `call'
+/Library/Ruby/Gems/1.8/gems/compass-1.0.1/bin/compass:44
+/usr/bin/compass:23:in `load'
+/usr/bin/compass:23
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: File not found or cannot be read: /Users/SKIff/www/arteva/images/icon_search_close.png\A         on line 95 of /Users/SKIff/www/arteva/sass/main.scss\A \A 90:         &:before {\A 91:             content:'';\A 92:             display: inline-block;\A 93:             width: 8px;\A 94:             height: 8px;\A 95:             background: inline_image('icon_search_close.png') 50% 50% no-repeat;\A 96:             margin-right: 10px;\A 97:             vertical-align: middle;\A 98:             @include transition(background-image 0.2s);\A 99:         }\A 100:         &:hover {"; }

@@ -1,0 +1,8 @@
+@mixin absolute_center {
+    position: absolute;
+    left:-9999px;
+    right:-9999px;
+    top:-9999px;
+    bottom:-9999px;
+    margin:auto;
+}

@@ -1,0 +1,140 @@
+$chosen-sprite: image-url('/img/spr_icons.png') !default;
+$chosen-sprite-retina: image-url('/css/plugins/chosen-sprite@2x.png') !default;
+.js-common-select, .js-common-select-nosearch {
+    &.chosen-container-single {
+        width: 100% !important;
+        .chosen-single {
+            @include border-radius(0);
+            @include box-shadow(none);
+            background: #fff;
+            border:1px solid #8e8e8e;
+            @include arialreg;
+            @include font($cBlack, 11px, 33px);
+            height: 33px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            div {
+                width: 36px;
+                b {
+                    width: 18px;
+                    height: 18px;
+                    margin: 8px;
+                    background: $chosen-sprite -196px 5px no-repeat;
+                }
+            }
+            span {
+                white-space: normal;
+            }
+            &.chosen-default {
+                span {
+                    @include avreg;
+                    @include font(#b1b1b1, 11px, 33px);
+                    text-transform: none;
+                    letter-spacing: 0;
+                }
+            }
+        }
+        .chosen-drop {
+            @include border-radius(0);
+            border:1px solid #e8e8e8;
+            @include box-shadow(none);
+            .chosen-results {
+                margin:0;
+                padding:0;
+                li {
+                    @include arialreg;
+                    @include font(#171717, 11px, 11px);
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                    padding:10px 15px;
+                    &.highlighted {
+                        background: #f2f2f2;
+                    }
+                }
+            }
+        }
+    }
+    &.chosen-container-active {
+        &.chosen-with-drop {
+            .chosen-single {
+                background: #000;
+                color:$cWhite;
+                div {
+                    b {
+                        background-position: -246px 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.js-multiple-select {
+    &.chosen-container-multi {
+        width: 100% !important;
+        .chosen-choices {
+            height: 33px;
+            @include border-radius(0);
+            @include box-shadow(none);
+            background: #000;
+            border:1px solid #fff;
+            li.search-field {
+                float: none;
+                display: inline-block;
+                vertical-align: middle;
+                input[type=text] {
+                    height: 32px;
+                    background: #000;
+                    @include avreg;
+                    @include font(#b1b1b1, 11px, 1);
+                    text-transform: none;
+                    letter-spacing: 0;
+                    padding-left: 7px;
+                }
+            }
+            li.search-choice {
+                float: none;
+                display: inline-block;
+                vertical-align: middle;
+                height: 19px;
+                @include arialreg;
+                @include font(#666666, 10px, 19px);
+                background: #ccc;
+                @include box-shadow(none);
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+        }
+        .chosen-drop {
+            @include border-radius(0);
+            border:1px solid #e8e8e8;
+            @include box-shadow(none);
+            .chosen-results {
+                margin:0;
+                padding:0;
+                li {
+                    @include arialreg;
+                    @include font(#171717, 11px, 11px);
+                    letter-spacing: 0;
+                    text-transform: none;
+                    padding:10px 15px;
+                    &.highlighted {
+                        background: #f2f2f2;
+                    }
+                    &.result-selected {
+                        color: #999999;
+                    }
+                }
+            }
+        }
+    }
+    &.chosen-container-active {
+        .chosen-choices {
+            li.search-field {
+                input[type=text] {
+                    color: #fff!important;
+                }
+            }
+        }
+    }
+}

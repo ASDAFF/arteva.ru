@@ -1,0 +1,15 @@
+.map-info-list {
+    .mCSB_container {
+        margin-right: 0;
+    }
+    .mCSB_scrollTools .mCSB_draggerRail {
+        width: 1px;
+        background: #dfdfdf;
+        @include border-radius(0);
+    }
+    .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+        background: #a3a3a3;
+        width: 5px;
+        @include border-radius(0);
+    }
+}

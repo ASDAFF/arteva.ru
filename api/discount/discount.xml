@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Items>
+	<Item>
+		<discount_id>11</discount_id>
+		<discount_name>10 %</discount_name>
+		<discount_type>P</discount_type>
+		<discount_value>10</discount_value>
+	</Item>
+	<Item>
+		<discount_id>10</discount_id>
+		<discount_name>15 %</discount_name>
+		<discount_type>P</discount_type>
+		<discount_value>15</discount_value>
+	</Item>
+	<Item>
+		<discount_id>5</discount_id>
+		<discount_name>20 %</discount_name>
+		<discount_type>P</discount_type>
+		<discount_value>20</discount_value>
+	</Item>
+	<Item>
+		<discount_id>8</discount_id>
+		<discount_name>25 %</discount_name>
+		<discount_type>P</discount_type>
+		<discount_value>25</discount_value>
+	</Item>
+	<Item>
+		<discount_id>1</discount_id>
+		<discount_name>30 %</discount_name>
+		<discount_type>P</discount_type>
+		<discount_value>30</discount_value>
+	</Item>
+	<Item>
+		<discount_id>4</discount_id>
+		<discount_name>35 %</discount_name>
+		<discount_type>P</discount_type>
+		<discount_value>35</discount_value>
+	</Item>
+	<Item>
+		<discount_id>9</discount_id>
+		<discount_name>4 %</discount_name>
+		<discount_type>P</discount_type>
+		<discount_value>4</discount_value>
+	</Item>
+	<Item>
+		<discount_id>6</discount_id>
+		<discount_name>40 %</discount_name>
+		<discount_type>P</discount_type>
+		<discount_value>40</discount_value>
+	</Item>
+	<Item>
+		<discount_id>2</discount_id>
+		<discount_name>50 %</discount_name>
+		<discount_type>P</discount_type>
+		<discount_value>50</discount_value>
+	</Item>
+	<Item>
+		<discount_id>7</discount_id>
+		<discount_name>60 %</discount_name>
+		<discount_type>P</discount_type>
+		<discount_value>60</discount_value>
+	</Item>
+	<Item>
+		<discount_id>3</discount_id>
+		<discount_name>70 %</discount_name>
+		<discount_type>P</discount_type>
+		<discount_value>70</discount_value>
+	</Item>
+</Items>

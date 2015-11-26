@@ -1,0 +1,100 @@
+Options -Indexes 
+ErrorDocument 404 /404.php
+
+#AuthType Basic
+#AuthName "Protected!"
+#AuthUserFile /var/www/arteva.itech-test.ru/web/.htpasswd
+#Require valid-user
+
+Redirect 301 /catalog/elitnye_stilnye_svetilniki/ /catalog/svetilniki/
+Redirect 301 /catalog/dizainerskay_mebel/ /catalog/mebel/
+Redirect 301 /catalog/komody/ /catalog/mebel/komody/
+Redirect 301 /catalog/konsoli/ /catalog/mebel/konsoli/
+Redirect 301 /catalog/dizainerskie_stoly/ /catalog/mebel/stoly/
+Redirect 301 /catalog/dizainerskie_aksessuary_i_predmety_interiera/ /catalog/predmety-interera/
+Redirect 301 /catalog/predmety_interjera_eichholtz/ /catalog/predmety-interera/
+Redirect 301 /catalog/chasy/ /catalog/predmety-interera/chasy/
+Redirect 301 /catalog/podsvechniki/ /catalog/predmety-interera/podsvechniki/
+Redirect 301 /catalog/raznoe/ /catalog/predmety-interera/predmety-dekora/
+Redirect 301 /catalog/shkatulki/ /catalog/predmety-interera/shkatulki/
+Redirect 301 /catalog/skulpturi/ /catalog/predmety-interera/statuetki/
+Redirect 301 /catalog/vazy/ /catalog/predmety-interera/vazy/
+Redirect 301 /catalog/veshalki/ /catalog/predmety-interera/veshalki/
+Redirect 301 /catalog/zerkala/ /catalog/predmety-interera/zerkala/
+Redirect 301 /sale/ /catalog/sale/
+Redirect 301 /catalog/bra/ /catalog/svetilniki/bra/
+Redirect 301 /catalog/lyustry/ /catalog/svetilniki/lyustry/
+Redirect 301 /catalog/lyustry/dizainerskie/ /catalog/svetilniki/lyustry/
+Redirect 301 /catalog/podvesnye/ /catalog/svetilniki/podvesy/
+Redirect 301 /catalog/torshery_napolnye/ /catalog/svetilniki/torshery/
+Redirect 301 /catalog/potolok/ /catalog/svetilniki/lyustry/potolochnye/
+Redirect 301 /catalog/lampy_nastolnye/ /catalog/svetilniki/nastolnye-lampy/
+Redirect 301 /catalog/klassicheskie_s_abazhurom/ /catalog/svetilniki/nastolnye-lampy/klassicheskie-s-abazhurom/
+Redirect 301 /catalog/svetilniki_dizajnerskie/ /catalog/svetilniki/nastolnye-lampy/dizaynerskie/
+Redirect 301 /o-kompanii/ /about/
+Redirect 301 /contacts/address.php/ /salons/salon-v-stroy-siti/
+Redirect 301 /contacts/payment.php/ /payment-and-shipping/
+Redirect 301 /contacts/self.php/  /payment-and-shipping/
+Redirect 301 /contacts/Moscow-delivery.php/ /payment-and-shipping/
+Redirect 301 /contacts/region-delivery.php/ /payment-and-shipping/
+Redirect 301 /contacts/region-delivery.php/ /payment-and-shipping/
+Redirect 301 /contacts/refund.php/  /payment-and-shipping/
+Redirect 301 /contacts/garanty.php/ /payment-and-shipping/
+Redirect 301 /contacts/service.php/ /payment-and-shipping/
+Redirect 301 /catalog/kresla/ /catalog/mebel/kresla-stulya/
+Redirect 301 /catalog/dizainerskie_shkafy/ /catalog/mebel/shkafy-stellazhi/
+Redirect 301 /catalog/__1/ /catalog/mebel/divany/
+Redirect 301 /catalog/__2/ /catalog/mebel/kresla-stulya/
+Redirect 301 /catalog/dizainerskie_stoly/ /catalog/mebel/stoly/
+Redirect 301 /catalog/elitnye_zhurnalnye_stoliki/ /catalog/mebel/stoly/zhurnalnye/
+Redirect 301 /catalog/obedennye/ /catalog/mebel/stoly/obedennye/
+Redirect 301 /catalog/konsoli/ /catalog/mebel/konsoli/
+Redirect 301 /catalog/pismennye/ /catalog/mebel/stoly/pismennye/
+Redirect 301 /catalog/predmety_servirovki/ /catalog/predmety-interera/posuda/
+Redirect 301 /catalog/printy-foto/ /catalog/predmety-interera/panno-i-postery/
+
+
+<IfModule mod_php5.c>
+  php_flag session.use_trans_sid off
+  #php_value display_errors 1
+  #php_value mbstring.func_overload 2
+  #php_value mbstring.internal_encoding UTF-8
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  Options +FollowSymLinks
+  RewriteBase /
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} !(.*)/$
+  RewriteRule ^(.*[^/])$ $1/ [L,R=301]
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^arteva\.ru [NC]
+  RewriteRule ^(.*)$ http://www.arteva.ru/$1 [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/catalog/$
+  RewriteRule ^.*$ /? [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^(.*)/{2,}(.*)$
+     # Проверяем, повторяется ли слеш (//) более двух раз.
+  RewriteRule . %1/%2 [R=301,L]
+     # Исключаем все лишние слеши.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !/bitrix/urlrewrite.php$
+  RewriteRule ^(.*)$ /bitrix/urlrewrite.php [L]
+  RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization}]
+</IfModule>
+
+<IfModule mod_dir.c>
+  DirectoryIndex index.php index.html
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive on
+  ExpiresByType image/jpeg "access plus 3 day"
+  ExpiresByType image/gif "access plus 3 day"
+  ExpiresByType image/png "access plus 3 day"
+  ExpiresByType text/css "access plus 3 day"
+  ExpiresByType application/javascript "access plus 3 day"  
+</IfModule>
