@@ -1,5 +1,7 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 <?
+
+//	var_dump($arResult);
 	// Получаем все родительские разделы текущего раздела
 	$SecParants1 = GetAllParantsSection($arResult['ID']); 
 
@@ -151,6 +153,7 @@
 			);?>
 	    </div>
 	</div>
+	<? test_dump($arResult); ?>
 	<div class="outer-content-wrapper">
 	    <div class="content-wrapper">
 	        <div class="item-cards-list-cnt">
