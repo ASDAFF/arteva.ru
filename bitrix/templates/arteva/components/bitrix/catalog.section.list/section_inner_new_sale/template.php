@@ -3,11 +3,12 @@
 global $APPLICATION;
 $curpage = $APPLICATION->GetCurPage();
 $arLink = explode("/", $curpage);
-$link = "/".$arLink[1]."/".$arLink[2]."/";
+$link = "/".$arLink[1]."/";
+//test_dump($arLink);
 ?>
-<?if ($arLink[2] == "new"):?>
+<?if ($arLink[1] == "new"):?>
     <h1>Новинки</h1>
-<?elseif ($arLink[2] == "sale"):?>
+<?elseif ($arLink[1] == "sale"):?>
     <h1>Распродажа</h1>
 <?endif?>
 <?if ($arResult["SECTIONS"]):?>

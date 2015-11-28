@@ -5,6 +5,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 if(empty($arResult))
 	return "";
 
+//test_dump($arResult);
+
 $strReturn = '<ul vocab="http://schema.org/" typeof="BreadcrumbList" class="breadcrumbs">';
 
 for($index = 0, $itemSize = count($arResult); $index < $itemSize; $index++)

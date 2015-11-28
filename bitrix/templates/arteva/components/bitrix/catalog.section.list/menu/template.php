@@ -1,8 +1,9 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
+
 <?foreach ($arResult["SECTIONS"] as $key => $arSections) :?>
     <?if ($arSections["DEPTH_LEVEL"] == 1):?>
         <? $counter = 0; ?>
-        <li class="has-sublist <?if ($arSections["SELECTED"]): echo 'active';endif;?>">
+        <li class="has-sublist <?if ($arSections["SELECTED"]): echo 'active'; endif;?>">
             <a href="<?=$arSections["SECTION_PAGE_URL"]?>" class="<?if ($arSections["SELECTED"]): echo 'active';endif;?>">
                 <?=$arSections["NAME"]?>
             </a>

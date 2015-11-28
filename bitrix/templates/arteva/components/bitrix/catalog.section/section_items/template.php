@@ -137,7 +137,7 @@
 					"IBLOCK_TYPE" => "catalog",
 					"IBLOCK_ID" => "17",
 					"SECTION_ID" => "",
-					"SECTION_CODE" => $_REQUEST["SECTION_CODE"],
+					"SECTION_CODE" => $arResult["CODE"],
 					"COUNT_ELEMENTS" => "Y",
 					"TOP_DEPTH" => "1",
 					"SECTION_FIELDS" => array("","",""),
@@ -153,7 +153,6 @@
 			);?>
 	    </div>
 	</div>
-	<? test_dump($arResult); ?>
 	<div class="outer-content-wrapper">
 	    <div class="content-wrapper">
 	        <div class="item-cards-list-cnt">
