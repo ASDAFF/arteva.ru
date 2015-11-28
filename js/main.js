@@ -1747,10 +1747,21 @@ var filter = (function($, _window){
             filter.sortPrice = sort.NO_SORT;
         };
 
+        var filterIsOpen = BX.localStorage.get("filterIsOpen");
+        if (filterIsOpen == null)
+            filterIsOpen = true;
+
+        if (filterIsOpen)
+        {
+            $('.catalog-filter-bottom').slideDown(200);
+            $('.js-filter-more-params').addClass('extended');
+        }
+
         $('.js-filter-more-params').on('click', function(e){
             e.preventDefault();
             $('.catalog-filter-bottom').slideToggle(200);
             $(this).toggleClass('extended');
+            BX.localStorage.set("filterIsOpen",$(this).hasClass('extended'),36000);
         });
 
         $('.js-sort').on('click', function(e){
