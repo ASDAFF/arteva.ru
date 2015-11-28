@@ -34,6 +34,8 @@ ErrorDocument 404 /404.php
   ExpiresByType image/gif "access plus 3 day"
 </IfModule>
 
+Redirect /upload/ http://dev.arteva.ru/upload/
+
 #AuthName "Protected Bitrix installer"
 #AuthType Basic
 

@@ -8,6 +8,14 @@ if( !empty($_GET['actionpay']) && isset( $_GET['actionpay'] ) ){
 	setCookie('actionpay', $_GET['actionpay'], time() + 30 * 24 * 3600, '/', 'www.arteva.ru');
 }
 
+function test_dump($v) {
+	global $USER;
+	if ($USER -> isAdmin()) {
+		echo "<pre>";
+		var_dump($v);
+		echo "</pre>";
+	}
+}
 
 
 /*
