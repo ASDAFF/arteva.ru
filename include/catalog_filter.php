@@ -101,7 +101,7 @@
             </div>
         </div>
 
-        
+
         <div class="catalog-filter-bottom">
             <?if ($filter_view == "SVET"):?>
                 <div class="row">
@@ -283,19 +283,6 @@
 				</div>
             <?endif?>
         </div>
-
-
-        <script type="text/javascript">
-            var filterIsOpen = BX.localStorage.get("filterIsOpen");
-            if (filterIsOpen == null)
-                filterIsOpen = true;
-
-            if (filterIsOpen)
-            {
-                $('.catalog-filter-bottom').slideDown(200);
-                $(this).addClass('extended');
-            }
-        </script>
 
         <?if ($link == "new"):?>
             <input type="hidden" name="new" value="1"><input type="hidden" name="sale" value="">

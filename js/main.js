@@ -1751,6 +1751,9 @@ var filter = (function($, _window){
         if (filterIsOpen == null)
             filterIsOpen = true;
 
+        // refresh value in storage
+        BX.localStorage.set("filterIsOpen",filterIsOpen,36000);
+
         if (filterIsOpen)
         {
             $('.catalog-filter-bottom').slideDown(200);
