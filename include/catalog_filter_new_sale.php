@@ -2,7 +2,8 @@
 global $APPLICATION;
 $curpage = $APPLICATION->GetCurPage();
 $arLink = explode("/", $curpage);
-$link = $arLink[2];
+$link = $arLink[1];
+//test_dump($arLink);
 ?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:catalog.section.list",
