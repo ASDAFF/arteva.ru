@@ -123,11 +123,24 @@ if ($arResult["NAV_RESULT"]->NavPageCount > 1):
     $showAll = true;
 endif;
 
+
+//============
+require($_SERVER["DOCUMENT_ROOT"]."/include/section_props.php");
+//AddMessage2Log($arResult);
+// Get props values for filter
+//$nonEmptyPropsOld = GetNonEmptyValuesForProps($arResult["IBLOCK_ID"], $arResult["ID"],$GLOBALS["arrFilterAjaxSection"]);
+$nonEmptyProps = GetNonEmptyValuesForProps($arResult["IBLOCK_ID"], $arResult["ID"],
+    Array("BRAND","STYLE","REPLICA","COLOR","COLOR_BASE","PLACE_MOUTING",$GLOBALS["MATERIAL_PROP_CODE"]),$GLOBALS["arrFilterAjaxSection"]);
+//AddMessage2Log($nonEmptyPropsOld);
+//AddMessage2Log($nonEmptyProps);
+//=============
+
 echo json_encode(
     array(
         "html" => ($html) ? $html : "",
         "page" => ($page) ? $page : "",
-        "showall" => $showAll
+        "showall" => $showAll,
+        "nonEmptyProps" => $nonEmptyProps
     )
 );
 ?>

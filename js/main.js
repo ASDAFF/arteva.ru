@@ -1740,6 +1740,8 @@ var filter = (function($, _window){
         });
     };
 
+
+
     f.initEvents = function(){
         var resetFields = function(){
             $('.js-sort').removeClass('sort-asc').removeClass('sort-desc').attr('data-state', 'none').addClass('sort-none');
@@ -1874,8 +1876,31 @@ var filter = (function($, _window){
                 } else {
                     $('.js-pagination-cnt').html('');
                 }
-            });
+
+                // Processing filter values
+                f.updateFilter(result.nonEmptyProps);
+
+            }).error(function(e){console.log(e)});
         }, 1000);
+    };
+
+    f.updateFilter = function(nonemptyProps){
+        $selectList = $("select.js-multiple-select");
+        $selectList.each(function(){
+            var propCode = $(this).attr("data-prop");
+            $(this).find("option").each(function(){
+                var optionVal = $(this).val();
+                var allowedValues = nonemptyProps[propCode];
+                if (optionVal != "" && allowedValues.indexOf(optionVal)==-1)
+                {
+                    $(this).hide();
+                }
+                else
+                    $(this).show();
+            });
+
+        });
+        $('.js-multiple-select').trigger('chosen:updated');
     };
 
     f.getFilter = function(){

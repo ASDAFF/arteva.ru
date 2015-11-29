@@ -211,6 +211,7 @@ function objectToArray($object)
 
 
 define("TRACE_FILENAME",$_SERVER["DOCUMENT_ROOT"]."/log/trace_".date("Ymd").".log");
+define("LOG_FILENAME",$_SERVER["DOCUMENT_ROOT"]."/log/log_".date("Ymd").".log");
 
 function Trace($object)
 {

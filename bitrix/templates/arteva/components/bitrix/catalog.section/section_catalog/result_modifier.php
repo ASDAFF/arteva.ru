@@ -2,14 +2,22 @@
 
 // свойства инфобока для фильтра
 $arFilter = Array("ACTIVE"=>"Y", "IBLOCK_ID"=>$arResult["IBLOCK_ID"]);
+
 $properties = CIBlockProperty::GetList(Array("sort"=>"asc", "name"=>"asc"), $arFilter);
+
+require($_SERVER["DOCUMENT_ROOT"]."/include/section_props.php");
+$nonEmptyProps = GetNonEmptyPropsValues($arResult["IBLOCK_ID"], $arResult["ID"]);
+//AddMessage2Log($nonEmptyProps);
+
 while ($prop_fields = $properties->GetNext())
 {
 	if ($prop_fields["PROPERTY_TYPE"] == "L"):
 		$property_enums = CIBlockPropertyEnum::GetList(Array("DEF"=>"DESC", "SORT"=>"ASC"), Array("IBLOCK_ID"=>$arResult["IBLOCK_ID"], "CODE"=>$prop_fields["CODE"]));
 		while($enum_fields = $property_enums->GetNext())
 		{
-		  	$prop_fields["ENUM_LIST"][] = $enum_fields;
+			//AddMessage2Log($nonEmptyProps[$enum_fields["PROPERTY_CODE"]]);
+			if (in_array($enum_fields["VALUE"], $nonEmptyProps[$enum_fields["PROPERTY_CODE"]]))
+				$prop_fields["ENUM_LIST"][] = $enum_fields;
 		}
 	endif;
 	$arProperties[$prop_fields["CODE"]] = $prop_fields;

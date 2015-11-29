@@ -20,7 +20,9 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED
             
         }
     }
-    
+
+    $GLOBALS["MATERIAL_PROP_CODE"] = $code_prop;
+
     $GLOBALS["arrFilterAjaxSection"] = array(
         ">=catalog_PRICE_1" => $_REQUEST["priceMin"],
         "<=catalog_PRICE_1" => $_REQUEST["priceMax"],
@@ -35,6 +37,8 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED
         "PROPERTY_NEW" => $new,
         "PROPERTY_SALE" => $sale,
     );
+
+
 	
 	// if( $_REQUEST["sale_bb"] == 1 ) 
 		// $template = "catalog_new_sale_bb"; 

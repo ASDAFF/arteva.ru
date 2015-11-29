@@ -108,7 +108,7 @@
                     <div class="col13">
                         <fieldset>
                             <label for="filter-brand">Бренд</label>
-                            <select data-name="filter-brand" name="filter-brand" id="filter-brand" multiple data-placeholder="Выберите бренд" class="js-multiple-select">
+                            <select data-prop="BRAND" data-name="filter-brand" name="filter-brand" id="filter-brand" multiple data-placeholder="Выберите бренд" class="js-multiple-select">
                                 <option value="" class="mobile-hide"></option>
                                 <?foreach ($arResult["PROPERTIES_IBLOCK"]["BRAND"]["ENUM_LIST"] as $key => $arProp) :?>
                                     <?if (in_array($arProp["VALUE"], $_REQUEST["filter-brand"])):?>
@@ -123,7 +123,7 @@
                     <div class="col13">
                         <fieldset>
                             <label for="filter-style">Стиль</label>
-                            <select data-name="filter-style" name="filter-style" id="filter-style" multiple data-placeholder="Выберите стиль" class="js-multiple-select">
+                            <select data-prop="STYLE" data-name="filter-style" name="filter-style" id="filter-style" multiple data-placeholder="Выберите стиль" class="js-multiple-select">
                                 <option value="" class="mobile-hide"></option>
                                 <?foreach ($arResult["PROPERTIES_IBLOCK"]["STYLE"]["ENUM_LIST"] as $key => $arProp) :?>
                                     <?if (in_array($arProp["VALUE"], $_REQUEST["filter-style"])):?>
@@ -138,7 +138,7 @@
                     <div class="col13">
                         <fieldset>
                             <label for="filter-material">Материал</label>
-                            <select data-name="filter-material" name="filter-material" id="filter-material" multiple data-placeholder="Выберите материал" class="js-multiple-select">
+                            <select data-prop="<?=$code_prop?>" data-name="filter-material" name="filter-material" id="filter-material" multiple data-placeholder="Выберите материал" class="js-multiple-select">
                                 <option value="" class="mobile-hide"></option>
                                 <?foreach ($arResult["PROPERTIES_IBLOCK"][$code_prop]["ENUM_LIST"] as $key => $arProp) :?>
                                     <?if (in_array($arProp["VALUE"], $_REQUEST["filter-material"])):?>
@@ -155,7 +155,7 @@
                     <div class="col13">
                         <fieldset>
                             <label for="filter-place-mouting">Место установки</label>
-                            <select data-name="filter-place-mouting" name="filter-place-mouting" id="filter-place-mouting" multiple data-placeholder="Выберите место установки" class="js-multiple-select">
+                            <select data-prop="PLACE_MOUTING" data-name="filter-place-mouting" name="filter-place-mouting" id="filter-place-mouting" multiple data-placeholder="Выберите место установки" class="js-multiple-select">
                                 <option value="" class="mobile-hide"></option>
                                 <?foreach ($arResult["PROPERTIES_IBLOCK"]["PLACE_MOUTING"]["ENUM_LIST"] as $key => $arProp) :?>
                                     <?if (in_array($arProp["VALUE"], $_REQUEST["filter-place-mouting"])):?>
@@ -170,7 +170,7 @@
                     <div class="col13">
                         <fieldset>
                             <label for="filter-replica">Реплика</label>
-                            <select data-name="filter-replica" name="filter-replica" id="filter-replica" multiple data-placeholder="Выберите значение" class="js-multiple-select">
+                            <select data-prop="REPLICA" data-name="filter-replica" name="filter-replica" id="filter-replica" multiple data-placeholder="Выберите значение" class="js-multiple-select">
                                 <option value="" class="mobile-hide"></option>
                                 <?foreach ($arResult["PROPERTIES_IBLOCK"]["REPLICA"]["ENUM_LIST"] as $key => $arProp) :?>
                                     <?if (in_array($arProp["VALUE"], $_REQUEST["filter-replica"])):?>
@@ -185,7 +185,7 @@
                     <div class="col13">
                         <fieldset>
                             <label for="filter-color">Цвет абажура</label>
-                            <select data-name="filter-color" name="filter-color" id="filter-color" multiple data-placeholder="Выберите цвет" class="js-multiple-select">
+                            <select data-prop="COLOR" data-name="filter-color" name="filter-color" id="filter-color" multiple data-placeholder="Выберите цвет" class="js-multiple-select">
                                 <option value="" class="mobile-hide"></option>
                                 <?foreach ($arResult["PROPERTIES_IBLOCK"]["COLOR"]["ENUM_LIST"] as $key => $arProp) :?>
                                     <?if (in_array($arProp["VALUE"], $_REQUEST["filter-color"])):?>
@@ -203,9 +203,9 @@
                         <fieldset>
 							<div style="display:none;"><?=print_r($arResult);?></div>
                             <label for="filter-color-base">Цвет основания</label>
-                            <select data-name="filter-color-base" name="filter-color-base" id="filter-color-base" multiple data-placeholder="Выберите цвет" class="js-multiple-select">
+                            <select data-prop="COLOR_BASE" data-name="filter-color-base" name="filter-color-base" id="filter-color-base" multiple data-placeholder="Выберите цвет" class="js-multiple-select">
                                 <option value="" class="mobile-hide"></option>
-                                <?foreach ($arResult["PROPERTIES_IBLOCK"]["COLOR"]["ENUM_LIST"] as $key => $arProp) :?>
+                                <?foreach ($arResult["PROPERTIES_IBLOCK"]["COLOR_BASE"]["ENUM_LIST"] as $key => $arProp) :?>
                                     <?if (in_array($arProp["VALUE"], $_REQUEST["filter-color-base"])):?>
                                         <option value="<?=$arProp["VALUE"]?>" selected><?=$arProp["VALUE"]?></option>
                                     <?else:?>
@@ -221,7 +221,7 @@
                     <div class="col13">
                         <fieldset>
                             <label for="filter-brand">Бренд</label>
-                            <select data-name="filter-brand" name="filter-brand" id="filter-brand" multiple data-placeholder="Выберите бренд" class="js-multiple-select">
+                            <select data-prop="BRAND" data-name="filter-brand" name="filter-brand" id="filter-brand" multiple data-placeholder="Выберите бренд" class="js-multiple-select">
                                 <option value="" class="mobile-hide"></option>
                                 <?foreach ($arResult["PROPERTIES_IBLOCK"]["BRAND"]["ENUM_LIST"] as $key => $arProp) :?>
                                     <?if (in_array($arProp["VALUE"], $_REQUEST["filter-brand"])):?>
@@ -236,7 +236,7 @@
                     <div class="col13">
                         <fieldset>
                             <label for="filter-material">Материал</label>
-                            <select data-name="filter-material" name="filter-material" id="filter-material" multiple data-placeholder="Выберите материал" class="js-multiple-select">
+                            <select data-prop="<?=$code_prop?>" data-name="filter-material" name="filter-material" id="filter-material" multiple data-placeholder="Выберите материал" class="js-multiple-select">
                                 <option value="" class="mobile-hide"></option>
                                 <?foreach ($arResult["PROPERTIES_IBLOCK"][$code_prop]["ENUM_LIST"] as $key => $arProp) :?>
                                     <?if (in_array($arProp["VALUE"], $_REQUEST["filter-material"])):?>
@@ -251,7 +251,7 @@
                     <div class="col13">
                         <fieldset>
                             <label for="filter-color">Цвет отделки</label>
-                            <select data-name="filter-color" name="filter-color" id="filter-color" multiple data-placeholder="Выберите цвет" class="js-multiple-select">
+                            <select data-prop="COLOR" data-name="filter-color" name="filter-color" id="filter-color" multiple data-placeholder="Выберите цвет" class="js-multiple-select">
                                 <option value="" class="mobile-hide"></option>
                                 <?foreach ($arResult["PROPERTIES_IBLOCK"]["COLOR"]["ENUM_LIST"] as $key => $arProp) :?>
                                     <?if (in_array($arProp["VALUE"], $_REQUEST["filter-color"])):?>
@@ -268,7 +268,7 @@
 					<div class="col13">
                         <fieldset>
                             <label for="filter-style">Стиль</label>
-                            <select data-name="filter-style" name="filter-style" id="filter-style" multiple data-placeholder="Выберите стиль" class="js-multiple-select">
+                            <select data-prop="STYLE" data-name="filter-style" name="filter-style" id="filter-style" multiple data-placeholder="Выберите стиль" class="js-multiple-select">
                                 <option value="" class="mobile-hide"></option>
                                 <?foreach ($arResult["PROPERTIES_IBLOCK"]["STYLE"]["ENUM_LIST"] as $key => $arProp) :?>
                                     <?if (in_array($arProp["VALUE"], $_REQUEST["filter-style"])):?>
