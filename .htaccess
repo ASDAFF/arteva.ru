@@ -16,6 +16,18 @@ Redirect /bitrix/images/ http://dev.arteva.ru/bitrix/images/
 <IfModule mod_rewrite.c>
   Options +FollowSymLinks
   RewriteEngine On
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^(.*[^/])$ /$1/ [L,R=301]
+
+  RewriteBase /
+
+  # force url to lowercase if upper case is found
+  RewriteCond %{REQUEST_URI} [A-Z]
+  # ensure it is not a file on the drive first
+  RewriteCond %{REQUEST_FILENAME} !-s
+  RewriteRule (.*) rewrite-strtolower.php?rewrite-strtolower-url=$1 [QSA,L]
+
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-l
   RewriteCond %{REQUEST_FILENAME} !-d
