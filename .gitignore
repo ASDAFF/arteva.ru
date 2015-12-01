@@ -24,3 +24,6 @@ api/1c_catalog/log.txt
 pics/*
 
 log/
+
+*.tar.*
+*.tar
