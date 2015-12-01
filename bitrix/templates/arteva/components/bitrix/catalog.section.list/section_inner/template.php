@@ -1,5 +1,6 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 <?
+test_dump($arResult);
 global $APPLICATION;
 $curpage = $APPLICATION->GetCurPage();
 ?>

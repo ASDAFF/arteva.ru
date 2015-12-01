@@ -32,7 +32,7 @@
 </script>
 
 <?if ($arResult["SEO_PRODUCTS"] && in_array($_REQUEST["page"], $arResult["SEO_PAGE_CODE"])):?>
-    	<?if($GLOBALS['CAT_TITLE']){?>
+	<?if($GLOBALS['CAT_TITLE']){?>
 		<h1><?=$GLOBALS['CAT_TITLE']?></h1>
 	<?}else{?>
 		<h1><?=$arResult["CUR_SEO_PAGE"]["NAME"]?></h1>
@@ -123,17 +123,16 @@
         </div>
     <?endif?>
 <?else:?>
-	
 	<?if ($_GET["show_all"] == 'yes'){?>
 		<script type="text/javascript">
 			$(window).load(function(){
 				$('a.js-show-all-items').click();
-				if (localStorage.detLink != 'full'){								
+				if (localStorage.detLink != 'full'){
 					setTimeout(function(){
                         $('html, body').animate({
 							scrollTop: $(localStorage.detLink).offset().top-125 // 125 - высота верхней наезжающей плашки
 						}, 1000);
-                    }, 2000);					
+                    }, 2000);
 					//console.log($(localStorage.detLink));
 				}
 			});
@@ -145,6 +144,19 @@
 			});
 		</script>
 	<?}?>
+
+	<h1><?=$arResult["NAME"]?></h1>
+
+<!--	--><?// test_dump($arResult); ?>
+<!---->
+<!--	<ul class="breadcrumbs">-->
+<!--		<li class="bc-item">-->
+<!--			<a href="/" title="Главная">Главная</a>-->
+<!--		</li>-->
+<!--		<li class="bc-item">-->
+<!--			<a>--><?//=$arResult["NAME"]?><!--</a>-->
+<!--		</li>-->
+<!--	</ul>-->
 
     <?
         include($_SERVER["DOCUMENT_ROOT"]."/include/catalog_filter.php");

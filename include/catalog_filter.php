@@ -20,27 +20,27 @@
     }
 ?>
 
-<?$APPLICATION->IncludeComponent(
-	"bitrix:catalog.section.list",
-	"section_inner",
-	Array(
-		"IBLOCK_TYPE" => "catalog",
-		"IBLOCK_ID" => "17",
-		"SECTION_ID" => "",
-		"SECTION_CODE" => $_REQUEST["SUB_SECTION_CODE"],
-		"COUNT_ELEMENTS" => "Y",
-		"TOP_DEPTH" => "1",
-		"SECTION_FIELDS" => array("","",""),
-		"SECTION_USER_FIELDS" => array("UF_1C_ID","",""),
-		"VIEW_MODE" => "LINE",
-		"SHOW_PARENT_NAME" => "Y",
-		"SECTION_URL" => "",
-		"CACHE_TYPE" => "A",
-		"CACHE_TIME" => "",
-		"CACHE_GROUPS" => "Y",
-		"ADD_SECTIONS_CHAIN" => "N"
-	)
-);?>
+<?//$APPLICATION->IncludeComponent(
+//	"bitrix:catalog.section.list",
+//	"section_inner",
+//	Array(
+//		"IBLOCK_TYPE" => "catalog",
+//		"IBLOCK_ID" => "17",
+//		"SECTION_ID" => "",
+//		"SECTION_CODE" => $_REQUEST["SUB_SECTION_CODE"],
+//		"COUNT_ELEMENTS" => "Y",
+//		"TOP_DEPTH" => "1",
+//		"SECTION_FIELDS" => array("","",""),
+//		"SECTION_USER_FIELDS" => array("UF_1C_ID","",""),
+//		"VIEW_MODE" => "LINE",
+//		"SHOW_PARENT_NAME" => "Y",
+//		"SECTION_URL" => "",
+//		"CACHE_TYPE" => "A",
+//		"CACHE_TIME" => "",
+//		"CACHE_GROUPS" => "Y",
+//		"ADD_SECTIONS_CHAIN" => "N"
+//	)
+//);?>
 
 
 
