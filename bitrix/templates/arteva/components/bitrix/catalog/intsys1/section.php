@@ -34,7 +34,7 @@ if (!findSection($arResult["VARIABLES"]["SECTION_CODE"], 17) && $section_code !=
 endif;
 
 $GLOBALS["arrFilterSectionItemsNew"] = array(
-    "PROPERTY_NEW" => 1
+   // "PROPERTY_NEW" => 1
 );
 
 if ($section_code != "new" && $section_code != "sale") {
