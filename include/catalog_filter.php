@@ -3,8 +3,10 @@
     $curpage = $APPLICATION->GetCurPage();
     $arLink = explode("/", $curpage);
     $link = $arLink[2];
+    $section_code = $arLink[1];
     // для каждого раздела свой материал и фильтр
-    switch ($_REQUEST["SECTION_CODE"]) {
+    //AddMessage2Log($arLink);
+    switch ($section_code) {
         case 'svetilniki':
             $code_prop = "SVET_MATERIAL";
             $filter_view = "SVET";
@@ -45,8 +47,10 @@
 
 
 <div class="catalog-filter">
+
     <a class="js-reset-filter reset-filter" href="#">Сбросить фильтр</a>
     <form class="common-form inverse" action="">
+        <input type="hidden" id="section_code" name="section_code" value="<?=$section_code?>">
         <div class="catalog-filter-top">
             <div class="price-slider-cnt">
                 <div class="price-slider" data-min="0" data-max="1000000" data-current-min="<?=($_REQUEST["priceMin"]) ? $_REQUEST["priceMin"] : 0?>" data-current-max="<?=($_REQUEST["priceMax"]) ? $_REQUEST["priceMax"] : 1000000?>"></div>
