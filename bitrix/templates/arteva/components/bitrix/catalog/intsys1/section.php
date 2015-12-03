@@ -139,14 +139,12 @@ if ($section_code != "new" && $section_code != "sale") {
                 "sale" => "Распродажа",
             );
             ?>
-            <ul class="breadcrumbs">
-                <li class="bc-item">
-                    <a href="/" title="Главная">Главная</a>
-                </li>
-                <li class="bc-item">
-                    <a><?= $NAMES[$section_code] ?></a>
-                </li>
-            </ul>
+            <?$APPLICATION->IncludeComponent("intsys:breadcrumb","bread",Array(
+                    "START_FROM" => "0",
+                    "PATH" => $APPLICATION->GetCurPage(),
+                    "SITE_ID" => "s1"
+                )
+            );?>
             <?
             if ($section_code == "new") {
                 $filterName = "arrFilterSectionNew";
@@ -269,13 +267,10 @@ if ($section_code != "new" && $section_code != "sale") {
                 );
             }
 
-            $APPLICATION->IncludeComponent(
-                "bitrix:breadcrumb",
-                "bread",
-                Array(
+            $APPLICATION->IncludeComponent("intsys:breadcrumb","bread",Array(
                     "START_FROM" => "0",
-                    "PATH" => "",
-                    "SITE_ID" => "-"
+                    "PATH" => $APPLICATION->GetCurPage(),
+                    "SITE_ID" => "s1"
                 )
             );
             $APPLICATION->IncludeComponent(
