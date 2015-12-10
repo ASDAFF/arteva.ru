@@ -5,11 +5,15 @@ $arFilter = Array("ACTIVE"=>"Y", "IBLOCK_ID"=>$arResult["IBLOCK_ID"]);
 
 $properties = CIBlockProperty::GetList(Array("sort"=>"asc", "name"=>"asc"), $arFilter);
 
-require($_SERVER["DOCUMENT_ROOT"]."/include/section_props.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/include/section_props.php");
 $nonEmptyProps = GetNonEmptyPropsValues($arResult["IBLOCK_ID"], $arResult["ID"]);
 //AddMessage2Log($arResult["IBLOCK_ID"]);
 //AddMessage2Log($arResult["ID"]);
 //AddMessage2Log($nonEmptyProps);
+
+//AddMessage2Log($arParams);
+
+$arResult["BRAND_NAME"] = $arParams["SECTION_USER_FIELDS"][0];
 
 while ($prop_fields = $properties->GetNext())
 {

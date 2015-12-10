@@ -12,7 +12,42 @@ $arResult = Array(
 
 $i = 1;
 $link = "/";
+
 foreach ($sections as $s) {
+	if ($i == 3) {
+//		AddMessage2Log($s);
+		//получаем все значения брендов
+		$brandFilter = false;
+		$BRANDS_QUERY = CIBlockPropertyEnum::GetList(
+				Array(
+						"SORT" => "ASC",
+						"VALUE" => "ASC"
+				),
+				Array(
+						"IBLOCK_ID" => "17",
+						"CODE" => "BRAND"
+				)
+		);
+		$k = 0;
+		while (($BRAND = $BRANDS_QUERY->Fetch()) != false) {
+			$BRANDS[$k] = $BRAND;
+
+//			AddMessage2Log("YEEEA!!!");
+
+			if (strtolower($BRAND["XML_ID"]) == strtolower($s)) {
+				$brandFilter = true;
+				$CURRENT_BRAND = $BRAND;
+			}
+
+			$k++;
+		}
+//		AddMessage2Log($CURRENT_BRAND);
+		//=================================
+		if ($brandFilter) {
+			$arResult[2]["TITLE"] = $arResult[2]["TITLE"] . " " . $CURRENT_BRAND["VALUE"];
+		}
+		continue;
+	}
 	$rsSections = CIBlockSection::GetList(array(), array('IBLOCK_ID' => 17, '=CODE' => $s));
 	$link = $link . $s . "/";
 	if ($arSection = $rsSections->Fetch()) {
