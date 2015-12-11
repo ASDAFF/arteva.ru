@@ -228,4 +228,28 @@ function Trace($object)
     }
 }
 
+function GetBrandByXmlId ($xmlid) {
+	$BRANDS_QUERY = CIBlockPropertyEnum::GetList(
+			Array(
+					"SORT" => "ASC",
+					"VALUE" => "ASC"
+			),
+			Array(
+					"IBLOCK_ID" => "17",
+					"CODE" => "BRAND"
+			)
+	);
+	$k = 0;
+	while (($BRAND = $BRANDS_QUERY->Fetch()) != false) {
+		$BRANDS[$k] = $BRAND;
+		if (strtolower($BRAND["XML_ID"]) == strtolower($xmlid)) {
+			$CURRENT_BRAND = $BRAND;
+		}
+
+		$k++;
+	}
+
+	return $CURRENT_BRAND;
+}
+
 ?>

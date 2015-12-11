@@ -34,7 +34,6 @@ foreach($_GET as $key =>  $val){
 
 }
 
-
 $parr = str_replace(' ', '%20', $par);
 
 if(!empty($_REQUEST['section_code'])){
@@ -47,6 +46,7 @@ if(!empty($GLOBALS['CATEGORY_CODE'])){
 //$urlPrint = str_replace('§', '&', $urlPrint);
 $showAll = false;
 $i = 0;
+
 foreach ($arResult["ITEMS"] as $key => $arItems):
     $i ++;
     $labels = null;
@@ -122,7 +122,6 @@ endif;
 if ($arResult["NAV_RESULT"]->NavPageCount > 1):
     $showAll = true;
 endif;
-
 
 //============
 require($_SERVER["DOCUMENT_ROOT"]."/include/section_props.php");

@@ -12,7 +12,26 @@ $arResult = Array(
 
 $i = 1;
 $link = "/";
+
 foreach ($sections as $s) {
+	if ($i == 3) {
+		$CURRENT_BRAND = GetBrandByXmlId($s);
+		$brandFilter = $CURRENT_BRAND != false;
+
+		if ($brandFilter) {
+			$arResult[2]["TITLE"] = $arResult[2]["TITLE"] . " " . $CURRENT_BRAND["VALUE"];
+		}
+
+		continue;
+	} elseif ($i == 2 && $sections[0] == "brands") {
+		$CURRENT_BRAND = GetBrandByXmlId($s);
+		$arResult[$i] = array(
+				"TITLE" => $CURRENT_BRAND["VALUE"],
+				"LINK" => $link
+		);
+		$i++;
+		continue;
+	}
 	$rsSections = CIBlockSection::GetList(array(), array('IBLOCK_ID' => 17, '=CODE' => $s));
 	$link = $link . $s . "/";
 	if ($arSection = $rsSections->Fetch()) {
@@ -24,6 +43,12 @@ foreach ($sections as $s) {
 	} elseif ($i == 1 && ($s == "new" || $s == "sale")) {
 		$arResult[$i] = array(
 				"TITLE" => $s == "new" ? "Новинки" : "Распродажа",
+				"LINK" => $link
+		);
+		$i++;
+	} elseif ($i == 1 && $s == "brands") {
+		$arResult[$i] = array(
+				"TITLE" => "Бренды",
 				"LINK" => $link
 		);
 		$i++;

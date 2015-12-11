@@ -45,6 +45,7 @@ function GetNonEmptyPropsValues($iblockId, $sectionId, $arFilter = Array())
             //print_r($arProps);
         }
 
+
         foreach($props as $code=>$vals)
             $props[$code] = array_values(array_unique($props[$code]));
 

@@ -1,9 +1,16 @@
 <?
+//test_dump("FILTER");
+//test_dump($GLOBALS["arrFilterSectionItemsNew"]);
+
     global $APPLICATION;
     $curpage = $APPLICATION->GetCurPage();
     $arLink = explode("/", $curpage);
     $link = $arLink[2];
     $section_code = $arLink[1];
+
+//    test_dump($arLink);
+//    test_dump($curpage);
+//    test_dump($section_code);
     // для каждого раздела свой материал и фильтр
     //AddMessage2Log($arLink);
     switch ($section_code) {
@@ -43,8 +50,6 @@
 //		"ADD_SECTIONS_CHAIN" => "N"
 //	)
 //);?>
-
-
 
 <div class="catalog-filter">
 
