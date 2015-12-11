@@ -11,13 +11,14 @@
 
     class siteMap
     {
-
         private $filename;
+        private $document_root;
         const SITEMAP_NAME = 'sitemap.xml';
 
         public function __construct($document_root)
         {
-            $this->filename=$document_root .'/'. self::SITEMAP_NAME;
+            $this->filename = $document_root . '/' . self::SITEMAP_NAME;
+            $this->document_root = $document_root;
         }
 
         public function build()
@@ -25,31 +26,97 @@
             file_put_contents(
                 $this->filename,
                 '<?xml version="1.0" encoding="UTF-8" ?>
-                <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                            xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-                                        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">'
+                <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
             );
 
-            $tree = $this->buildDirTree();
-            array_map(
-                'write',
-                $tree
+            $tree[] = $this->buildDirTree($this->document_root);
+
+            array_walk(
+                $tree,
+                [
+                    'self',
+                    'write_tree'
+                ]
             );
-            function write($section)
+            file_put_contents(
+                $this->filename,
+                "\n</urlset>",
+                FILE_APPEND
+            );
+        }
+
+        public static function write_tree($section)
+        {
+
+            file_put_contents(
+                $_SERVER['DOCUMENT_ROOT'] . '/' . self::SITEMAP_NAME,
+                "\n<url>\n<loc>" . $_SERVER['SERVER_NAME'] . $section['dir'] . "</loc>\n<priority>" . $section['PRIORITY'][0] . "</priority>\n</url>",
+                FILE_APPEND
+            );
+            $sec = explode(
+                '/',
+                $section['dir']
+            );
+            $sec = $sec[ count($sec) - 2 ];
+            if ($sec != '')
             {
-                file_put_contents(
-                    $this->filename,'<url><loc>'.$_SERVER['SERVER_NAME'].$section['dir'].'</loc><priority>'.$section['PRIORITY'].'</priority></url>',FILE_APPEND);
+                $iblock_tree = self::buildIblockTree(
+                    $sec,
+                    $section['dir'],
+                    $section['PRIORITY']
+                );
+
+                array_walk(
+                    $iblock_tree,
+                    [
+                        'self',
+                        'write_iblock_tree'
+                    ]
+                );
+
+            }
+
+            if (count($section['children']) > 0)
+            {
+                array_walk(
+                    $section['children'],
+                    [
+                        'self',
+                        'write_tree'
+                    ]
+                );
             }
         }
 
-
-        public static function buildIblockTree($code)
+        public static function write_iblock_tree($tree)
         {
+            $_SERVER['DOCUMENT_ROOT'] . '/' . self::SITEMAP_NAME;
+            file_put_contents(
+                $_SERVER['DOCUMENT_ROOT'] . '/' . self::SITEMAP_NAME,
+                "\n<url>\n<loc>" . $_SERVER['SERVER_NAME'] . $tree['path'] . "</loc>\n<priority>" . $tree['priority'] . "</priority>\n</url>",
+                FILE_APPEND
+            );
+            if (is_array($tree['children']) && count($tree['children']) > 0)
+            {
+                $tree['children']['priority'] = $tree['priority'];
+                array_walk(
+                    $tree['children'],
+                    [
+                        'self',
+                        'write_iblock_tree'
+                    ]
+                );
+            }
+        }
+
+        public static function buildIblockTree($code, $path, $priority)
+        {
+            echo 'path=';
+            var_dump($path);
             $sections = [];
             $res = CIBlockSection::GetTreeList(
-                [],
-                ['IBLOCK_CODE' => $code]
+                ['IBLOCK_CODE' => $code],
+                []
             );
             while ($section = $res->Fetch())
             {
@@ -60,26 +127,55 @@
                     'PARENT' => $section['IBLOCK_SECTION_ID'],
                 ];
             }
+            $res = CIBlockElement::GetList(
+                [],
+                [
+                    'IBLOCK_CODE' => $code,
+                    '!CODE'       => false
+                ]
+            );
+            while ($element = $res->Fetch())
+            {
+                $sections[ $element['ID'] ] = [
+                    'ID'     => $element['ID'],
+                    'CODE'   => $element['CODE'],
+                    'NAME'   => $element['NAME'],
+                    'PARENT' => $element['IBLOCK_SECTION_ID'],
+                ];
+            }
 
             /* полное дерево папок инфоблока */
 
-            return self::get_section_children($sections);
+            return self::get_section_children(
+                $sections,
+                $path,
+                $priority
+            );
         }
 
         /* Рекурсивная функция для построения дерева папок */
-        public static function get_section_children(&$sections, $parent = false)
+        public static function get_section_children(&$sections, $path, $priority, $parent = false, $depth = 1)
         {
             $result = [];
 
             /* Проход по всем элементам массива */
             foreach ($sections AS $id => $item)
             {
+                $item['depth'] = $depth;
                 /* Уровень вложенности элемента должен совпадат с искомым */
                 if ($item['PARENT'] == $parent)
                 {
+                    $item['path'] = $path . $item['CODE'].'/' ;
+                    $item['priority'] = self::getPriority(
+                        $priority,
+                        $depth
+                    );
                     $item['children'] = self::get_section_children(
                         $sections,
-                        $id
+                        $item['path'],
+                        $priority,
+                        $id,
+                        $depth + 1
                     );
                     $result[ $item['CODE'] ] = $item;
                 }
@@ -103,17 +199,6 @@
                 )
             ) return false;
             include($folder . '/.section.php');
-            $result[] = [
-                'dir'      => str_replace(
-                        $_SERVER['DOCUMENT_ROOT'],
-                        '',
-                        $folder
-                    ) . '/',
-                'PRIORITY' => explode(
-                                  '/',
-                                  $arDirProperties['PRIORITY']
-                              )[0]
-            ];
 
             foreach ($files as $file)
             {
@@ -128,19 +213,40 @@
                     );
                     if ($res)
                     {
-                        $result [] = $res;
+                        $children[] = $res;
                     }
                 }
             }
 
-            return $result;
+
+            return [
+                'dir'      => str_replace(
+                        $_SERVER['DOCUMENT_ROOT'],
+                        '',
+                        $folder
+                    ) . '/',
+                'PRIORITY' => explode(
+                    '/',
+                    $arDirProperties['PRIORITY']
+                ),
+                'children' => $children
+            ];
+        }
+
+        public static function getPriority(array $priority, $depth)
+        {
+            $res = ($depth > count($priority) - 1) ? $priority[ count($priority) - 1 ] : $priority[ $depth ];
+
+            return $res;
         }
     }
 
 ?>
 <pre>
-    <? $sitemap= new siteMap($_SERVER['DOCUMENT_ROOT']);
-        var_dump($sitemap); ?>
+    <? $sitemap = new siteMap($_SERVER['DOCUMENT_ROOT']);
+        $sitemap->build();
+
+    ?>
 </pre>
 
 
