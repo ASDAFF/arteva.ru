@@ -15,37 +15,21 @@ $link = "/";
 
 foreach ($sections as $s) {
 	if ($i == 3) {
-//		AddMessage2Log($s);
-		//получаем все значения брендов
-		$brandFilter = false;
-		$BRANDS_QUERY = CIBlockPropertyEnum::GetList(
-				Array(
-						"SORT" => "ASC",
-						"VALUE" => "ASC"
-				),
-				Array(
-						"IBLOCK_ID" => "17",
-						"CODE" => "BRAND"
-				)
-		);
-		$k = 0;
-		while (($BRAND = $BRANDS_QUERY->Fetch()) != false) {
-			$BRANDS[$k] = $BRAND;
+		$CURRENT_BRAND = GetBrandByXmlId($s);
+		$brandFilter = $CURRENT_BRAND != false;
 
-//			AddMessage2Log("YEEEA!!!");
-
-			if (strtolower($BRAND["XML_ID"]) == strtolower($s)) {
-				$brandFilter = true;
-				$CURRENT_BRAND = $BRAND;
-			}
-
-			$k++;
-		}
-//		AddMessage2Log($CURRENT_BRAND);
-		//=================================
 		if ($brandFilter) {
 			$arResult[2]["TITLE"] = $arResult[2]["TITLE"] . " " . $CURRENT_BRAND["VALUE"];
 		}
+
+		continue;
+	} elseif ($i == 2 && $sections[0] == "brands") {
+		$CURRENT_BRAND = GetBrandByXmlId($s);
+		$arResult[$i] = array(
+				"TITLE" => $CURRENT_BRAND["VALUE"],
+				"LINK" => $link
+		);
+		$i++;
 		continue;
 	}
 	$rsSections = CIBlockSection::GetList(array(), array('IBLOCK_ID' => 17, '=CODE' => $s));
@@ -59,6 +43,12 @@ foreach ($sections as $s) {
 	} elseif ($i == 1 && ($s == "new" || $s == "sale")) {
 		$arResult[$i] = array(
 				"TITLE" => $s == "new" ? "Новинки" : "Распродажа",
+				"LINK" => $link
+		);
+		$i++;
+	} elseif ($i == 1 && $s == "brands") {
+		$arResult[$i] = array(
+				"TITLE" => "Бренды",
 				"LINK" => $link
 		);
 		$i++;

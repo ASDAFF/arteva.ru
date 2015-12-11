@@ -92,11 +92,11 @@ if ($section_code == "brands" && $subsection_code == false) {
 <div class="outer-content-wrapper">
     <div class="content-wrapper">
     	<?$APPLICATION->IncludeComponent(
-	        "bitrix:breadcrumb",
+	        "intsys:breadcrumb",
 	        "bread",
 	        Array(
 	            "START_FROM" => "0",
-	            "PATH" => "",
+	            "PATH" => $APPLICATION->GetCurPage(),
 	            "SITE_ID" => "-"
 	        )
 	    );?>
@@ -157,32 +157,7 @@ if ($section_code == "brands" && $subsection_code == false) {
 } elseif ($section_code == "brands" && $subsection_code != false) {
     //Для начала надо проверить, а есть ли такой бренд
     //получаем все значения брендов
-    $brandPage = false;
-    $BRANDS_QUERY = CIBlockPropertyEnum::GetList(
-        Array(
-            "SORT" => "ASC",
-            "VALUE" => "ASC"
-        ),
-        Array(
-            "IBLOCK_ID" => "17",
-            "CODE" => "BRAND"
-        )
-    );
-    $i = 0;
-    while (($BRAND = $BRANDS_QUERY->Fetch()) != false) {
-        $BRANDS[$i] = $BRAND;
-
-//    test_dump(strtolower($BRAND["XML_ID"]) . " != " . strtolower($third_section_code));
-
-
-        if (strtolower($BRAND["XML_ID"]) == strtolower($subsection_code)) {
-            $brandFilter = true;
-            $CURRENT_BRAND1 = $BRAND;
-        }
-
-        $i++;
-    }
-//=================================
+    $CURRENT_BRAND1 = GetBrandByXmlId($subsection_code);
     if ($CURRENT_BRAND1 == false) {
         include($_SERVER["DOCUMENT_ROOT"] . "/404.php");
         die();
