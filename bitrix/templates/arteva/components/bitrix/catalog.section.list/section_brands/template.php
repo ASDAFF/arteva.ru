@@ -25,18 +25,26 @@ foreach ($list_subsections as $l) {
     );
     $element = $elements -> Fetch();
 
+//    test_dump($CURRENT_BRAND);
+
+//    test_dump($element);
+
+    $sect = GetIBlockSection($element["IBLOCK_SECTION_ID"]);
+
+//    test_dump($section);
+
 //    test_dump($l);
 //    test_dump($element != false);
     if ($element != false) {
-        $list_subsections_filtered[] = $l;
+        $list_subsections_filtered[] = $sect;
     }
 }
 ?>
-<h1>Бренд <?=$CURRENT_BRAND["VALUE"]?></h1>
+<h1><?=$CURRENT_BRAND["VALUE"]?></h1>
 <div class="item-cards-list-cnt">
     <ul class="item-cards-list matrix categories">
         <?foreach ($list_subsections_filtered as $subsection) :
-            $url = "http://yandex.ru";
+            $url = strtolower($subsection["SECTION_PAGE_URL"] . $CURRENT_BRAND["XML_ID"] . "/");
 
             ?>
             <li class="item-card-item">
