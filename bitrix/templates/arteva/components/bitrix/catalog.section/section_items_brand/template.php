@@ -123,14 +123,15 @@
 							"SITE_ID" => "s1"
 					)
 			);?>
+			<? /*test_dump(explode("/", $APPLICATION->GetCurPage()));*/ ?>
 		    <?$APPLICATION->IncludeComponent(
 				"bitrix:catalog.section.list",
-				"section",
+				"section_brands",
 				Array(
 					"IBLOCK_TYPE" => "catalog",
 					"IBLOCK_ID" => "17",
 					"SECTION_ID" => "",
-					"SECTION_CODE" => $arResult["CODE"],
+					"SECTION_CODE" => explode("/", $APPLICATION->GetCurPage())[2],
 					"COUNT_ELEMENTS" => "Y",
 					"TOP_DEPTH" => "1",
 					"SECTION_FIELDS" => array("","",""),
