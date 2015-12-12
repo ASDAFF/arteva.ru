@@ -9,8 +9,8 @@ ErrorDocument 404 /404.php
 #php_value mbstring.func_overload 2
 #php_value mbstring.internal_encoding UTF-8
 
-Redirect /upload/ http://dev.arteva.ru/upload/
-Redirect /bitrix/images/ http://dev.arteva.ru/bitrix/images/
+#Redirect /upload/ http://dev.arteva.ru/upload/
+#Redirect /bitrix/images/ http://dev.arteva.ru/bitrix/images/
 #RedirectMatch ^/upload/(.*) http://dev.arteva.ru/upload/$1
 
 <IfModule mod_rewrite.c>
