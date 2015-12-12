@@ -31,7 +31,7 @@ foreach ($list_subsections as $l) {
     $el = $elements -> GetNext();
 
     if ($el != false) {
-        $sect = GetIBlockSection($el["IBLOCK_SECTION_ID"]);
+        $sect = GetIBlockSection($l["ID"]);
         $list_subsections_filtered[] = $sect;
     }
 }
