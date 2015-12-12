@@ -2,7 +2,8 @@
 <?
 $CURRENT_BRAND = GetBrandByXmlId($arResult["BRAND"]);
 //test_dump($CURRENT_BRAND);
-$list = CIBlockSection::GetList(
+$SEC = new CIBlockSection();
+$list = $SEC->GetList(
     array(),
     array(
         "IBLOCK_ID" => "17",
@@ -14,28 +15,23 @@ while ($i = $list -> Fetch()) {
     $list_subsections[] = $i;
 }
 $list_subsections_filtered = array();
+//test_dump($CURRENT_BRAND);
 foreach ($list_subsections as $l) {
-    $elements = CIBlockElement::GetList(
+
+    $EL = new CIBlockElement;
+    $elements = $EL->GetList(
         array(),
         array(
             "IBLOCK_ID" => "17",
-            "SECTION_CODE" => $l["CODE"],
-            "PROPERTY_BRAND_VALUE" => $CURRENT_BRAND["VALUE"]
+            "SECTION_ID" => $l["ID"],
+            "INCLUDE_SUBSECTIONS" => "Y",
+            "PROPERTY_BRAND_VALUE" => array($CURRENT_BRAND["VALUE"])
         )
     );
-    $element = $elements -> Fetch();
+    $el = $elements -> GetNext();
 
-//    test_dump($CURRENT_BRAND);
-
-//    test_dump($element);
-
-    $sect = GetIBlockSection($element["IBLOCK_SECTION_ID"]);
-
-//    test_dump($section);
-
-//    test_dump($l);
-//    test_dump($element != false);
-    if ($element != false) {
+    if ($el != false) {
+        $sect = GetIBlockSection($el["IBLOCK_SECTION_ID"]);
         $list_subsections_filtered[] = $sect;
     }
 }
@@ -52,7 +48,7 @@ foreach ($list_subsections as $l) {
                     <div class="img-cnt">
                         <img src="/img/img_dummy.png" data-src="<?=CFIle::GetPath($subsection["~PICTURE"])?>" alt=""/></div>
                     <div class="item-info">
-                        <p class="category"><?=$subsection["NAME"]?></p>
+                        <p class="category"><?=$subsection["NAME"] . " " . $CURRENT_BRAND["VALUE"]?></p>
                     </div>
                 </a>
             </li>
