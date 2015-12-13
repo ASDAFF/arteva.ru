@@ -7,6 +7,8 @@ $properties = CIBlockProperty::GetList(Array("sort"=>"asc", "name"=>"asc"), $arF
 
 require($_SERVER["DOCUMENT_ROOT"]."/include/section_props.php");
 $nonEmptyProps = GetNonEmptyPropsValues($arResult["IBLOCK_ID"], $arResult["ID"]);
+//AddMessage2Log($arResult["IBLOCK_ID"]);
+//AddMessage2Log($arResult["ID"]);
 //AddMessage2Log($nonEmptyProps);
 
 while ($prop_fields = $properties->GetNext())

@@ -5,7 +5,6 @@ $arUrlRewrite = array(
 		"RULE" => "",
 		"ID" => "bitrix:catalog",
 		"PATH" => "/index.php",
-		"SORT" => "100",
 	),
 );
 

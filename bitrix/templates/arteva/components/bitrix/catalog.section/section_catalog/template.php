@@ -144,19 +144,15 @@
 			});
 		</script>
 	<?}?>
-
+	<?$APPLICATION->IncludeComponent("intsys:breadcrumb","bread",Array(
+					"START_FROM" => "0",
+					"PATH" => $APPLICATION->GetCurPage(),
+					"SITE_ID" => "s1"
+			)
+	);?>
 	<h1><?=$arResult["NAME"]?></h1>
 
-<!--	--><?// test_dump($arResult); ?>
-<!---->
-<!--	<ul class="breadcrumbs">-->
-<!--		<li class="bc-item">-->
-<!--			<a href="/" title="Главная">Главная</a>-->
-<!--		</li>-->
-<!--		<li class="bc-item">-->
-<!--			<a>--><?//=$arResult["NAME"]?><!--</a>-->
-<!--		</li>-->
-<!--	</ul>-->
+
 
     <?
         include($_SERVER["DOCUMENT_ROOT"]."/include/catalog_filter.php");

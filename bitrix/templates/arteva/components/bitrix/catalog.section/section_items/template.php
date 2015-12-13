@@ -38,17 +38,12 @@
 <?if ($arResult["SEO_PRODUCTS"] && in_array($_REQUEST["page"], $arResult["SEO_PAGE_CODE"])):?>
 	<div class="outer-content-wrapper">
     	<div class="content-wrapper">
-    		<ul class="breadcrumbs">
-    			<li class="bc-item">
-    				<a href="/" title="Главная">Главная</a>
-    			</li>
-    			<li class="bc-item">
-    				<a href="<?=$arResult["SECTION_PAGE_URL"]?>"><?=$arResult["NAME"]?></a>
-    			</li>
-    			<li class="bc-item">
-    				<a><?=$arResult["CUR_SEO_PAGE"]["NAME"]?></a>
-    			</li>
-    		</ul>
+			<?$APPLICATION->IncludeComponent("intsys:breadcrumb","bread",Array(
+							"START_FROM" => "0",
+							"PATH" => $APPLICATION->GetCurPage(),
+							"SITE_ID" => "s1"
+					)
+			);?>
 		    <h1><?=$arResult["CUR_SEO_PAGE"]["NAME"]?></h1>
 		    <div class="text-content">
 		        <?if ($arResult["CUR_SEO_PAGE"]["~PREVIEW_PICTURE"]):?>
@@ -122,14 +117,12 @@
 <?else:?>
 	<div class="outer-content-wrapper">
     	<div class="content-wrapper">
-    		<ul class="breadcrumbs">
-    			<li class="bc-item">
-    				<a href="/" title="Главная">Главная</a>
-    			</li>
-    			<li class="bc-item">
-    				<a><?=$arResult["NAME"]?></a>
-    			</li>
-    		</ul>
+			<?$APPLICATION->IncludeComponent("intsys:breadcrumb","bread",Array(
+							"START_FROM" => "0",
+							"PATH" => $APPLICATION->GetCurPage(),
+							"SITE_ID" => "s1"
+					)
+			);?>
 		    <?$APPLICATION->IncludeComponent(
 				"bitrix:catalog.section.list",
 				"section",
