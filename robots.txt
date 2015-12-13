@@ -24,6 +24,7 @@ Disallow: /*?COURSE_ID=
 Disallow: /*SHOWALL
 Disallow: /*show_all=
 Disallow: /pagen
+Disallow: /?SECTION_CODE=*
 Host: www.arteva.ru
 
  
@@ -52,5 +53,6 @@ Disallow: /*COURSE_ID=
 Disallow: /*?COURSE_ID=
 Disallow: /*SHOWALL
 Disallow: /*show_all=
+Disallow: /?SECTION_CODE=*
 
 Sitemap: http://www.arteva.ru/sitemap.xml

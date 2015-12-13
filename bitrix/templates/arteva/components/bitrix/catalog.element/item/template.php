@@ -56,9 +56,16 @@
                 <?if ($arResult["PRICES"]["BASE"]["DISCOUNT_VALUE"] < $arResult["PRICES"]["BASE"]["VALUE"]):?>
                     <p class="old-price"><?=number_format($arResult["PRICES"]["BASE"]["VALUE"], 0, 0, " ")?> <span>руб.</span></p>
                 <?endif?>
-			
-			
 			<?}?>
+            </div>
+
+            <div class="right">
+                <?
+                    $h_domain = $_SERVER['SERVER_NAME'];
+                ?>
+            <?
+                echo '<a href="http://'.$h_domain.'/brands/'.$arResult["PROPERTIES"]["BRAND"]["VALUE"][0].'">'.$arResult["PROPERTIES"]["BRAND"]["VALUE"][0].'</a>';
+            ?>
             </div>
         </div>
         <div class="badge-cnt">
