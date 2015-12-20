@@ -27,7 +27,30 @@
             $filter_view = "INTERIER";
             break;
     }
+
+
+//AddMessage2Log("filter=");
+include_once($_SERVER["DOCUMENT_ROOT"]."include/process_filter_in_url.php");
+//UrlFilter::ConvertToUrlForm("BRAND","Arteval");
+
+$filter = UrlFilter::GetFilter($section_code);
+$filterExpr = "";
+
+if ($filter)
+{
+    $filterName = $filter['name'];
+    if (strpos($filterName,'MATERIAL') !== false)
+        $filterName='material';
+    $_REQUEST['filter-'.strtolower($filterName)] = Array($filter['value']);
+    //AddMessage2Log($_REQUEST);
+    $filterExpr = UrlFilter::GetUrlFilterExpression($filter['name'], $filter['value']);
+}
 ?>
+
+<script type="text/javascript">
+    var filterExpression = '<?=$filterExpr?>';
+</script>
+
 
 <?//$APPLICATION->IncludeComponent(
 //	"bitrix:catalog.section.list",
@@ -215,7 +238,7 @@
                             <select data-prop="COLOR_BASE" data-name="filter-color-base" name="filter-color-base" id="filter-color-base" multiple data-placeholder="Выберите цвет" class="js-multiple-select">
                                 <option value="" class="mobile-hide"></option>
                                 <?foreach ($arResult["PROPERTIES_IBLOCK"]["COLOR_BASE"]["ENUM_LIST"] as $key => $arProp) :?>
-                                    <?if (in_array($arProp["VALUE"], $_REQUEST["filter-color-base"])):?>
+                                    <?if (in_array($arProp["VALUE"], $_REQUEST["filter-color_base"])):?>
                                         <option value="<?=$arProp["VALUE"]?>" selected><?=$arProp["VALUE"]?></option>
                                     <?else:?>
                                         <option value="<?=$arProp["VALUE"]?>"><?=$arProp["VALUE"]?></option>
@@ -232,8 +255,10 @@
                             <label for="filter-brand">Бренд</label>
                             <select data-prop="BRAND" data-name="filter-brand" name="filter-brand" id="filter-brand" multiple data-placeholder="Выберите бренд" class="js-multiple-select">
                                 <option value="" class="mobile-hide"></option>
+
                                 <?foreach ($arResult["PROPERTIES_IBLOCK"]["BRAND"]["ENUM_LIST"] as $key => $arProp) :?>
-                                    <?if (in_array($arProp["VALUE"], $_REQUEST["filter-brand"])):?>
+                                    <?
+                                    if (in_array($arProp["VALUE"], $_REQUEST["filter-brand"])):?>
                                         <option value="<?=$arProp["VALUE"]?>" selected><?=$arProp["VALUE"]?></option>
                                     <?else:?>
                                         <option value="<?=$arProp["VALUE"]?>"><?=$arProp["VALUE"]?></option>

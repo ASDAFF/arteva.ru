@@ -134,12 +134,63 @@ $nonEmptyProps = GetNonEmptyValuesForProps($arResult["IBLOCK_ID"], $arResult["ID
 //AddMessage2Log($nonEmptyProps);
 //=============
 
+// If count of selected filter options is equal to one
+// then return new url with filter expression
+include_once($_SERVER["DOCUMENT_ROOT"]."/include/process_filter_in_url.php");
+$optCnt = GetFilterOptionsCount();
+$filterExpr = "";
+
+//AddMessage2Log($GLOBALS["arrFilterAjaxSection"]);
+AddMessage2Log($_REQUEST);
+//AddMessage2Log($optCnt);
+if ($optCnt==1)
+{
+    // Get filter name
+    $filters = $GLOBALS["arrFilterAjaxSection"];
+    $filterName = "";
+    $filterValue = "";
+    foreach($filters as $key => $value)
+        if (strpos($key,"PROPERTY") !== false
+            && strpos($key,"VALUE")!==false
+            && !empty($value))
+        {
+            $start = strpos($key,'_')+1;
+            $len = strrpos($key,'_') - $start;
+            $filterName = substr($key,$start,$len);
+            $filterValue = $value[0];
+            break;
+        }
+
+    //AddMessage2Log($filterName.'='.$filterValue);
+    $filterExpr = UrlFilter::GetUrlFilterExpression($filterName, $filterValue);
+}
+else if ($optCnt==0)
+{
+    $filterExpr = "";
+}
+else
+    $filterExpr = "unchanged";
+//AddMessage2Log($filterExpr);
+
+function GetFilterOptionsCount()
+{
+    $c = 0;
+    foreach($_REQUEST as $key => $value)
+    {
+        if (strpos($key,"filter")===0 && is_array($value))
+            $c += count($value);
+    }
+    return $c;
+}
+
+
 echo json_encode(
     array(
         "html" => ($html) ? $html : "",
         "page" => ($page) ? $page : "",
         "showall" => $showAll,
-        "nonEmptyProps" => $nonEmptyProps
+        "nonEmptyProps" => $nonEmptyProps,
+        "filterExpr" => $filterExpr
     )
 );
 ?>

@@ -210,23 +210,9 @@ function objectToArray($object)
 }
 
 
-define("TRACE_FILENAME",$_SERVER["DOCUMENT_ROOT"]."/log/trace_".date("Ymd").".log");
+
 define("LOG_FILENAME",$_SERVER["DOCUMENT_ROOT"]."/log/log_".date("Ymd").".log");
 
-function Trace($object)
-{
-    if ($fp = @fopen(TRACE_FILENAME, "ab+"))
-    {
-        if (flock($fp, LOCK_EX))
-        {
-            @fwrite($fp,print_r($object,true));
-            @fwrite($fp, "\r\n----------\r\n");
-            @fflush($fp);
-            @flock($fp, LOCK_UN);
-            @fclose($fp);
-        }
-    }
-}
 
 function GetBrandByXmlId ($xmlid) {
 	$BRANDS_QUERY = CIBlockPropertyEnum::GetList(
@@ -250,6 +236,23 @@ function GetBrandByXmlId ($xmlid) {
 	}
 
 	return $CURRENT_BRAND;
+}
+
+AddEventHandler("main",'OnProlog','processUrlFilter');
+
+//$_SERVER["REQUEST_URI"]="/";
+//global $APPLICATION;
+//AddMessage2Log($APPLICATION->GetCurPage());
+//$APPLICATION->SetCurPage("/svetilniki/", "");
+
+
+function processUrlFilter(){
+	//include_once($_SERVER["DOCUMENT_ROOT"] . "/include/process_filter_in_url.php");
+	// check if last segment in url is filter
+	//$urlFilter = UrlFilter::ProcessFilterInUrl($_SERVER['QUERY_STRING']);
+	//AddMessage2Log($_SERVER["REQUEST_URI"]);
+	//
+
 }
 
 ?>

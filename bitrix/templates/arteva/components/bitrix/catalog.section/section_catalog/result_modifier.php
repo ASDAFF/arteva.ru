@@ -6,7 +6,8 @@ $arFilter = Array("ACTIVE"=>"Y", "IBLOCK_ID"=>$arResult["IBLOCK_ID"]);
 $properties = CIBlockProperty::GetList(Array("sort"=>"asc", "name"=>"asc"), $arFilter);
 
 require($_SERVER["DOCUMENT_ROOT"]."/include/section_props.php");
-$nonEmptyProps = GetNonEmptyPropsValues($arResult["IBLOCK_ID"], $arResult["ID"]);
+//AddMessage2Log(array_merge($arFilter,$GLOBALS[$arParams["FILTER_NAME"]]));
+$nonEmptyProps = GetNonEmptyPropsValues($arResult["IBLOCK_ID"], $arResult["ID"], array_merge($arFilter,$GLOBALS[$arParams["FILTER_NAME"]]));
 //AddMessage2Log($arResult["IBLOCK_ID"]);
 //AddMessage2Log($arResult["ID"]);
 //AddMessage2Log($nonEmptyProps);
@@ -17,8 +18,10 @@ while ($prop_fields = $properties->GetNext())
 		$property_enums = CIBlockPropertyEnum::GetList(Array("DEF"=>"DESC", "SORT"=>"ASC"), Array("IBLOCK_ID"=>$arResult["IBLOCK_ID"], "CODE"=>$prop_fields["CODE"]));
 		while($enum_fields = $property_enums->GetNext())
 		{
-			//AddMessage2Log($nonEmptyProps[$enum_fields["PROPERTY_CODE"]]);
-			if (in_array($enum_fields["VALUE"], $nonEmptyProps[$enum_fields["PROPERTY_CODE"]]))
+			//AddMessage2Log('PROPERTY_'.$enum_fields['PROPERTY_CODE'].'_VALUE');
+			//AddMessage2Log();
+			if (in_array('PROPERTY_'.$enum_fields['PROPERTY_CODE'].'_VALUE',array_keys($GLOBALS[$arParams["FILTER_NAME"]])) ||
+			in_array($enum_fields["VALUE"], $nonEmptyProps[$enum_fields["PROPERTY_CODE"]]))
 				$prop_fields["ENUM_LIST"][] = $enum_fields;
 		}
 	endif;

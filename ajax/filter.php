@@ -38,7 +38,6 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED
         "PROPERTY_SALE" => $sale,
     );
 
-    AddMessage2Log($_REQUEST);
 	
 	// if( $_REQUEST["sale_bb"] == 1 ) 
 		// $template = "catalog_new_sale_bb"; 
@@ -126,4 +125,6 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED
         )
     );
 endif;
+
+
 ?>

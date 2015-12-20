@@ -1657,6 +1657,7 @@ var filter = (function($, _window){
         filterTimeout,
         sendFilterAJAX = function(filter){
             var url = '/ajax/filter.php';
+            console.log(filter);
             if ($('.js-page').length && $('.js-page').attr('data-page') == 'search') url = '/ajax/search_catalog.php'; // для поиска
             return $.ajax({
                 url: url,
@@ -1718,7 +1719,7 @@ var filter = (function($, _window){
 
         $.each($selects, function(idx,elt){
             var groupName = $(elt).attr('data-name');
-            filter[groupName] = [];
+            filter[groupName] = $(this).val();
         });
 
         return this;
@@ -1880,9 +1881,40 @@ var filter = (function($, _window){
                 // Processing filter values
                 f.updateFilter(result.nonEmptyProps);
 
+                // Process filter expression in url
+                f.setFilterExpression(result.filterExpr);
+
             }).error(function(e){console.log(e)});
         }, 1000);
     };
+
+    f.setFilterExpression = function (expr)
+    {
+        //debugger;
+        // filterExpression is set in catalog_filter.php
+        if (expr=="unchanged") return;
+        if (filterExpression==expr) return;
+        var url = document.location.pathname;
+        var query = document.location.search;
+        if (filterExpression != "") {
+            // remove last segment from url
+            console.log("remove filter expression=" + filterExpression);
+            url = url.replace(filterExpression+'/','');;
+            //var url = 'hello-world.html';
+            //history.pushState(state, title, url);
+        }
+
+        if (expr != "") {
+            // add filter expression to the last segment
+            ;
+            url += expr+'/';
+            console.log(url);
+        }
+        filterExpression = expr;
+        url += query;
+        if (document.location.href != url)
+            history.replaceState({'expr':expr}, '', url);
+    }
 
     f.updateFilter = function(nonemptyProps){
         $selectList = $("select.js-multiple-select");

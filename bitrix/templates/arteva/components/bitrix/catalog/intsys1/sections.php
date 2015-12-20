@@ -2,7 +2,11 @@
 $APPLICATION->SetPageProperty("title", 'Интернет-магазин дизайнерских товаров и предметов интерьера "Arteva Home"');
 $APPLICATION->SetPageProperty("keywords", "arteva home дизайнерские вещи интернет магазин в москве товаров предметов интерьера artevaluce");
 $APPLICATION->SetPageProperty("description", 'Интернет-магазин дизайнерских товаров и предметов интерьера "Arteva Home". Магазин дизайнерских вещей в Москве.');
-$APPLICATION->SetTitle("Arteva");?>
+$APPLICATION->SetTitle("Arteva");
+
+?>
+
+
 	<div class="index-content-wrapper">
 		<div class="main-slider-cnt">
 			<?$APPLICATION->IncludeComponent(

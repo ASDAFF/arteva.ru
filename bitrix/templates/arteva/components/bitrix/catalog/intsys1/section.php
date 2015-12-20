@@ -13,6 +13,7 @@
 use Bitrix\Main\Loader;
 use Bitrix\Main\ModuleManager;
 
+
 //var_dump($arResult);
 
 $this->setFrameMode(true);
@@ -249,8 +250,19 @@ if ($section_code == "brands" && $subsection_code == false) {
 } elseif ($section_code != "new" && $section_code != "sale" && !$brandFilter) {
     if ($subsection_code == false)
         $template = "section_items";
-    if ($section_code != false && $subsection_code != false)
+    if ($section_code != false && $subsection_code != false) {
         $template = "section_catalog";
+
+        // process filter in url
+        include_once($_SERVER["DOCUMENT_ROOT"] . "/include/process_filter_in_url.php");
+        $filter = UrlFilter::GetFilter($section_code);
+        //AddMessage2Log($section_code);
+        //AddMessage2Log($filter);
+        if ($filter) {
+            $GLOBALS["arrFilterSectionItemsNew"][$filter["query-name"]] = $filter["value"];
+            //AddMessage2Log($filter["value"]);
+        }
+    }
 
     if ($template == "section_catalog") {
         ?>
