@@ -28,5 +28,28 @@ endif;
 if (in_array(8, $USER->GetUserGroupArray())):
 	$arResult["USER_DESIGNER"] = true;
 endif;
+
+//AddMessage2Log($arResult);
+
+if(CModule::IncludeModule('iblock'))
+{
+	//AddMessage2Log($arResult["PROPERTIES"]["BRAND"]["VALUE"][0]);
+	$rsElement = CIBlockElement::GetList(
+			array(),
+			array("IBLOCK_ID"=>6,"Name"=>$arResult["PROPERTIES"]["BRAND"]["VALUE"][0]),
+			false,
+			false,
+			array("PREVIEW_PICTURE")
+	);
+	if($arElement = $rsElement->Fetch())
+	{
+		//AddMessage2Log($arElement);
+		$arFile = CFile::GetFileArray($arElement["PREVIEW_PICTURE"]);
+		//AddMessage2Log($arFile);
+		if($arFile)
+			$arResult["BRAND_LOGO"] = $arFile["SRC"];
+	}
+}
+
 //echo "<pre>";print_r($arSimilarItems);echo "</pre>";
 ?>

@@ -64,7 +64,9 @@
                     $h_domain = $_SERVER['SERVER_NAME'];
                 ?>
             <?
-                echo '<a href="http://'.$h_domain.'/brands/'.$arResult["PROPERTIES"]["BRAND"]["VALUE"][0].'">'.$arResult["PROPERTIES"]["BRAND"]["VALUE"][0].'</a>';
+                echo '<a href="http://'.$h_domain.'/brands/'.$arResult["PROPERTIES"]["BRAND"]["VALUE"][0].'">'
+                    ."<img src='{$arResult['BRAND_LOGO']}'/>".
+                    '</a>';
             ?>
             </div>
         </div>
