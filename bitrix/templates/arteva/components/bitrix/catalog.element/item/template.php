@@ -43,7 +43,11 @@
     <div class="item-card-info-cnt">
         <div class="item-top-info">
             <aside class="left">
-                <h1 itemprop="name" class="num name_tov"><?=$arResult["NAME"]?></h1><br/>
+                <?
+                    $new_name = $arResult["NAME"];
+                    $new_name.= " ".$arResult["PROPERTIES"]["BRAND"]["VALUE"][0];
+                ?>
+                <h1 itemprop="name" class="num name_tov"><?=$new_name?></h1><br/>
                
                 <p class="name"> <span class="subhead21">Артикул</span> <?=$arResult["PROPERTIES"]["ARTIKUL"]["VALUE"]?></p>
             </aside>
@@ -59,13 +63,15 @@
 			<?}?>
             </div>
 
-            <div class="right">
+            <div class="right"">
                 <?
                     $h_domain = $_SERVER['SERVER_NAME'];
                 ?>
             <?
-                echo '<a href="http://'.$h_domain.'/brands/'.$arResult["PROPERTIES"]["BRAND"]["VALUE"][0].'">'
-                    ."<img src='{$arResult['BRAND_LOGO']}'/>".
+                $brand_name = str_replace(" ", "_", $arResult["PROPERTIES"]["BRAND"]["VALUE"][0]);
+                //AddMessage2Log($arResult["PROPERTIES"]["BRAND"]["VALUE"][0], '/log/');
+                echo '<a href="http://'.$h_domain.'/brands/'.$brand_name.'/">'
+                    ."<img  style='width: 100px; height: 80px;' src='{$arResult['BRAND_LOGO']}'/>".
                     '</a>';
             ?>
             </div>
