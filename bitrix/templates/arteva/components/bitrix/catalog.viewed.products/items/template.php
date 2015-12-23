@@ -1,6 +1,13 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 <?if ($arResult["ITEMS"]):?>
-    <div class="outer-content-wrapper item-recent-viewed">
+    <style>
+        @media screen and (min-width: 1900px) {
+            .item-page-outer-posit {
+                width: 1518px !important;
+            }
+        }
+    </style>
+    <div class="outer-content-wrapper item-recent-viewed item-page-outer-posit" style="float:none;">
         <div class="content-wrapper">
             <p class="section-header">Вы недавно смотрели</p>
             <div class="item-cards-list-cnt">

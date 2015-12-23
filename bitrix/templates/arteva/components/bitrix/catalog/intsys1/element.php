@@ -135,8 +135,8 @@ endif;
 		</div>
 	</div>
 <?elseif ($res == "element"):?>
-	<div class="item-page-outer">
-		<div class="outer-content-wrapper item-card-wrapper">
+	<div class="item-page-outer" style="width: 100%;">
+		<div class="outer-content-wrapper item-card-wrapper" style="float: none;">
 			<div class="content-wrapper">
 				<?$APPLICATION->IncludeComponent(
 						"bitrix:breadcrumb",
