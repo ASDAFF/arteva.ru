@@ -1,6 +1,6 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 <?if ($arResult["ITEMS"]):?>
-    <div class="outer-content-wrapper item-cross">
+    <div class="outer-content-wrapper item-cross item-page-outer-posit" style="float:none; margin-left: auto; margin-right: auto;">
         <div class="content-wrapper">
             <p class="section-header">С этим товаром покупают</p>
             <div class="item-cards-list-cnt">

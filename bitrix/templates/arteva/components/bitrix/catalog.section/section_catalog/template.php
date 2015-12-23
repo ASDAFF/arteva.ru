@@ -156,6 +156,7 @@
 
     <?
         include($_SERVER["DOCUMENT_ROOT"]."/include/catalog_filter.php");
+		include_once($_SERVER['DOCUMENT_ROOT'].'/include/getTitle_and_getAlt.php');
     ?>
     <div class="item-cards-list-cnt">
         <ul class="item-cards-list matrix">
@@ -168,10 +169,10 @@
                             $waterImage["src"] = CFIle::GetPath($arItems["~PREVIEW_PICTURE"]);
                         ?>
     	                <div class="img-cnt">
-    	                	<img src="/img/img_dummy.png" data-src="<?=$waterImage["src"]?>" alt=""/>
+    	                	<img src="/img/img_dummy.png" data-src="<?=$waterImage["src"]?>" alt="<?=getAlt($arItems)?>" title="<?=getTitle($arItems)?>"/>
     	                </div>
     	                <div class="item-info">						
-    	                    <p class="item-brand"><?=$arItems["NAME"]?></p>														
+    	                    <p class="item-brand"><?=$arItems["NAME"]?></p>
     	                    <p class="item-desc">Артикул <?=$arItems["PROPERTIES"]["ARTIKUL"]["VALUE"]?></p>
                             <?if ($arItems["PRICES"]["BASE"]["DISCOUNT_VALUE"] < $arItems["PRICES"]["BASE"]["VALUE"]){?>
 							<div class="item-price">

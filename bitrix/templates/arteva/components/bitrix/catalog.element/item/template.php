@@ -13,6 +13,7 @@
                     $view = false;
                     $arResult["PROPERTIES"]["IMAGES"]["VALUE"][] = $arResult["~PREVIEW_PICTURE"];
                 endif;
+            //AddMessage2Log($arResult["PREVIEW_PICTURE"], '/log/');
             ?>
             <?foreach ($arResult["PROPERTIES"]["IMAGES"]["VALUE"] as $key => $imgId) :?>
                 <?
@@ -21,7 +22,7 @@
                 ?>
                 <li>
                     <a rel="gallery1" class="js-fbx-image js-zoom" href="<?=$waterImage["src"]?>">
-                        <img itemprop="image" src="<?=$waterImage["src"]?>" alt=""/>
+                        <img itemprop="image" src="<?=$waterImage["src"]?>" alt="<?=$arResult["PREVIEW_PICTURE"]["ALT"]?>" title="<?=$arResult["PREVIEW_PICTURE"]["TITLE"]?>"/>
                     </a>
                 </li>
             <?endforeach?>
@@ -69,7 +70,7 @@
                 ?>
             <?
                 $brand_name = str_replace(" ", "_", $arResult["PROPERTIES"]["BRAND"]["VALUE"][0]);
-                //AddMessage2Log($arResult["PROPERTIES"]["BRAND"]["VALUE"][0], '/log/');
+
                 echo '<a href="http://'.$h_domain.'/brands/'.$brand_name.'/">'
                     ."<img  style='width: 100px; height: 80px;' src='{$arResult['BRAND_LOGO']}'/>".
                     '</a>';
