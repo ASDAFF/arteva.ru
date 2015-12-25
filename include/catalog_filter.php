@@ -79,6 +79,10 @@ if ($filter)
     <a class="js-reset-filter reset-filter" href="#">Сбросить фильтр</a>
     <form class="common-form inverse" action="">
         <input type="hidden" id="section_code" name="section_code" value="<?=$section_code?>">
+        <input type="hidden" name="section_id" value="<?=$arResult["ID"]?>">
+        <? if ($arResult['IS_ROOT_SECTION']): ?>
+        <input type="hidden" name="is_root_section" value="1">
+        <? endif; ?>
         <div class="catalog-filter-top">
             <div class="price-slider-cnt">
                 <div class="price-slider" data-min="0" data-max="1000000" data-current-min="<?=($_REQUEST["priceMin"]) ? $_REQUEST["priceMin"] : 0?>" data-current-max="<?=($_REQUEST["priceMax"]) ? $_REQUEST["priceMax"] : 1000000?>"></div>
@@ -324,8 +328,6 @@ if ($filter)
             <input type="hidden" name="new" value=""><input type="hidden" name="sale" value="1">
         <?else:?>
             <input type="hidden" name="new" value=""><input type="hidden" name="sale" value="">
-        <?endif?>        
-        <input type="hidden" name="section_code" value="<?=htmlspecialchars($_REQUEST["SECTION_CODE"])?>">
-        <input type="hidden" name="section_id" value="<?=$arResult["ID"]?>">
+        <?endif?>
     </form>
 </div>

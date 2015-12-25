@@ -126,9 +126,13 @@ class UrlFilter
         return $filterMod;
     }
 
-    public static function ProcessFilterInRequestURI()
+    public static function ProcessFilterInRequest()
     {
-        self::$filter = self::ProcessFilterInUrl($_SERVER["REQUEST_URI"]);
+        if ($_SERVER['HTTP_X_REQUESTED_WITH']=='XMLHttpRequest')
+            $url = $_SERVER['HTTP_REFERER'];
+        else
+            $url = $_SERVER["REQUEST_URI"];
+        self::$filter = self::ProcessFilterInUrl($url);
 
         if (self::$filter)
         {

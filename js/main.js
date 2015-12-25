@@ -1628,6 +1628,7 @@ var filter = (function($, _window){
             sortPrice: sort.NO_SORT,
             section_code: $('[name="section_code"]').val(),
             section_id: $('[name="section_id"]').val(),
+            is_root_section: $('[name="is_root_section"]').val(),
             'new': $('[name="new"]').val(),
             sale: $('[name="sale"]').val(),
             q: $('.catalog-filter').find('[name="q"]').val(), // для поиска
@@ -1643,6 +1644,7 @@ var filter = (function($, _window){
             sortPrice: sort.NO_SORT,
             section_code: $('[name="section_code"]').val(),
             section_id: $('[name="section_id"]').val(),
+            is_root_section: $('[name="is_root_section"]').val(),
             'new': $('[name="new"]').val(),
             sale: $('[name="sale"]').val(),
             q: $('.catalog-filter').find('[name="q"]').val(), // для поиска
@@ -1839,8 +1841,15 @@ var filter = (function($, _window){
                             return elt;
                         }
                     });
+
+
+                    var sections = $(result.sectionsHtml);
+                    console.log($result);
                     setTimeout(function(){
-                        $catalogList.empty().append($result);
+                        $catalogList.not('.categories').empty().append($result);
+                        $catalogList.filter('.categories').empty()
+                            .append(sections.children());
+
                         $catalogCnt.removeClass('loading');
                         $catalogList.find('img').unveil(0, function(){
                             $(this).load(function() {

@@ -6,11 +6,7 @@ $arFilter = Array("ACTIVE"=>"Y", "IBLOCK_ID"=>$arResult["IBLOCK_ID"]);
 $properties = CIBlockProperty::GetList(Array("sort"=>"asc", "name"=>"asc"), $arFilter);
 
 require($_SERVER["DOCUMENT_ROOT"]."/include/section_props.php");
-//AddMessage2Log(array_merge($arFilter,$GLOBALS[$arParams["FILTER_NAME"]]));
 $nonEmptyProps = GetNonEmptyPropsValues($arResult["IBLOCK_ID"], $arResult["ID"], array_merge($arFilter,$GLOBALS[$arParams["FILTER_NAME"]]));
-//AddMessage2Log($arResult["IBLOCK_ID"]);
-//AddMessage2Log($arResult["ID"]);
-//AddMessage2Log($nonEmptyProps);
 
 while ($prop_fields = $properties->GetNext())
 {

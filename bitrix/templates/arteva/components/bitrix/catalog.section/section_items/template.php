@@ -141,7 +141,8 @@
 					"CACHE_TYPE" => "A",
 					"CACHE_TIME" => "36000000",
 					"CACHE_GROUPS" => "Y",
-					"ADD_SECTIONS_CHAIN" => "Y"
+					"ADD_SECTIONS_CHAIN" => "Y",
+					"FILTER_NAME" => $arParams['FILTER_NAME'],
 				)
 			);?>
 	    </div>
@@ -196,6 +197,7 @@
 		                </li>
 	               	<?endforeach?>
 	            </ul>
+				<div class="preload-overlay"><i></i></div>
 	        </div>
 	        <?if ($arResult["SEO_PAGES"]):?>
 		        <div class="catalog-tags-cnt">
