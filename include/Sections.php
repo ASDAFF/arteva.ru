@@ -93,6 +93,25 @@ class Sections
         }
     }
 
+    /**
+     * @param array $sections Each item should contain ID key
+     * @param array $arFilter
+     * @return array
+     */
+    public static function RemoveEmptySections($sections, $arFilter)
+    {
+        $arFilter = array_merge($arFilter, Array("INCLUDE_SUBSECTIONS"=>"Y"));
+        $nonEmptySections = Array();
+        foreach($sections as $arSection) {
+            $sectionId = $arSection['ID'];
+            $arFilter['SECTION_ID'] = $sectionId;
+            $count = CIBlockElement::GetList(array("SORT"=>"ASC"), $arFilter, array(), false, array());
+            if ($count>0)
+                $nonEmptySections[]=$arSection;
+        }
+        return $nonEmptySections;
+    }
+
     public static function GenerateMarkup($sections)
     {
         ob_start(); ?>
