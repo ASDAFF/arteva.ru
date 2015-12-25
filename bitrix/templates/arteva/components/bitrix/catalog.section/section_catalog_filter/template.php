@@ -164,12 +164,15 @@ else if ($optCnt==0)
     $filterExpr = "";
 }
 else {
+    UrlFilter::ProcessFilterInRequest();
     $filter = UrlFilter::GetFilter($_REQUEST['section_code']);
-    AddMessage2Log($filter);
-    if (false) //filter options are more than 1, but current url filter was unchecked
-        $filterExpr = "";
-    else
+    $filters = $GLOBALS["arrFilterAjaxSection"];
+
+    if (is_array($filters[$filter['query-name']]) && in_array($filter['value'],$filters[$filter['query-name']]))
         $filterExpr = "unchanged";
+    else
+        //filter options are more than 1, but current url filter was unchecked
+        $filterExpr = "";
 }
 //AddMessage2Log($filterExpr);
 
