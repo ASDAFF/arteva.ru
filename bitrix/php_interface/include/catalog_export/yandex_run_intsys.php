@@ -863,7 +863,7 @@ if (empty($arRunErrors))
 				$str_TYPE = '';
 
 			$strTmpOff.= "<offer id=\"".$arAcc["ID"]."\"".$str_TYPE.$str_AVAILABLE.">\n";
-			$strTmpOff.= "<url>http://".$ar_iblock['SERVER_NAME'].htmlspecialcharsbx($arAcc["~DETAIL_PAGE_URL"]).(strstr($arAcc['DETAIL_PAGE_URL'], '?') === false ? '?' : '&amp;')."r1=<?echo \$strReferer1; ?>&amp;r2=<?echo \$strReferer2; ?></url>\n";
+			$strTmpOff.= "<url>http://".$ar_iblock['SERVER_NAME'].htmlspecialcharsbx($arAcc["~DETAIL_PAGE_URL"])."</url>\n";
 
 			$strTmpOff.= "<price>".$minPrice."</price>\n";
 			$strTmpOff.= "<currencyId>".$minPriceCurrency."</currencyId>\n";
