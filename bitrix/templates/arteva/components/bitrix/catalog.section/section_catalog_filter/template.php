@@ -193,8 +193,10 @@ $htmlForSections="";
 if ($_REQUEST['is_root_section']) {
     $propFilter = $GLOBALS["arrFilterAjaxSection"];
     $sectionId = $_REQUEST['section_id'];
+    $arFilter = Array("IBLOCK_ID" => $arResult["IBLOCK_ID"], "SECTION_ID" => $sectionId);
+    $arFilter = array_merge($propFilter,$arFilter);
     require_once($_SERVER["DOCUMENT_ROOT"] . "/include/Sections.php");
-    $nonEmptySections = Sections::GetNonEmpty2(Array("IBLOCK_ID" => $arResult["IBLOCK_ID"], "SECTION_ID" => $sectionId));
+    $nonEmptySections = Sections::GetNonEmpty3($arFilter);
     $htmlForSections = Sections::GenerateMarkup($nonEmptySections);
 }
 //============================

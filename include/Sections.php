@@ -68,6 +68,31 @@ class Sections
         }
     }
 
+    /**
+     * Returns non empty subsections of section with SECTION_ID in infoblock with IBLOCK_ID
+     * @param array $arFilter Required keys are IBLOCK_ID and SECTION_ID
+     * @return array
+     */
+    public static function GetNonEmpty3($arFilter)
+    {
+        if (CModule::IncludeModule('iblock')) {
+            $arSelect = Array("IBLOCK_ID", "NAME", "SECTION_PAGE_URL", "PICTURE");
+            $arFilterSections = Array("IBLOCK_ID" => $arFilter["IBLOCK_ID"], "SECTION_ID"=>$arFilter["SECTION_ID"]);
+
+            $sections = CIBlockSection::GetList(array("SORT" => "asc"), $arFilterSections, false, $arSelect);
+            $arFilter = array_merge($arFilter, Array("INCLUDE_SUBSECTIONS"=>"Y"));
+            $nonEmptySections = Array();
+            while ($arSection = $sections->GetNext()) {
+                $sectionId = $arSection['ID'];
+                $arFilter['SECTION_ID'] = $sectionId;
+                $count = CIBlockElement::GetList(array("SORT"=>"ASC"), $arFilter, array(), false, array());
+                if ($count>0)
+                    $nonEmptySections[]=$arSection;
+            }
+            return $nonEmptySections;
+        }
+    }
+
     public static function GenerateMarkup($sections)
     {
         ob_start(); ?>
