@@ -250,9 +250,11 @@ if ($section_code == "brands" && $subsection_code == false) {
 } elseif ($section_code != "new" && $section_code != "sale" && !$brandFilter) {
     if ($subsection_code == false)
         $template = "section_items";
-    if ($section_code != false && $subsection_code != false) {
+    if ($section_code != false && $subsection_code != false)
         $template = "section_catalog";
 
+    if ($section_code != false)
+    {
         // process filter in url
         include_once($_SERVER["DOCUMENT_ROOT"] . "/include/process_filter_in_url.php");
         $filter = UrlFilter::GetFilter($section_code);

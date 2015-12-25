@@ -115,8 +115,3 @@ function GetNonEmptyValuesForProps($iblockId, $sectionId, $propsCodes, $arFilter
     return $props;
 }
 
-//echo "<pre>";
-//print_r(
-//    GetNonEmptyValuesForProps(17,688,Array("COLOR","BRAND")));
-//
-//echo "</pre>";

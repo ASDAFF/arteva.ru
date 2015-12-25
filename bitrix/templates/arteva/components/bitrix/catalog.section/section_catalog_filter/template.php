@@ -91,12 +91,7 @@ foreach ($arResult["ITEMS"] as $key => $arItems):
 		$labels .= '<div class="item-card-badge sale">скидка 10% bb</div>';
 	}
 	
-	
-    if ($USER->IsAdmin()){
-        if($i == 1){
-            $html = '<div style="color:red" >' . $url . '</div>';
-        }
-    }
+
 
     $html .= '<li class="item-card-item js-item" data-id="'.$arItems["ID"].'">
                 <a href="'.$arItems["DETAIL_PAGE_URL"].'">
@@ -141,7 +136,7 @@ $optCnt = GetFilterOptionsCount();
 $filterExpr = "";
 
 //AddMessage2Log($GLOBALS["arrFilterAjaxSection"]);
-AddMessage2Log($_REQUEST);
+//AddMessage2Log($_REQUEST);
 //AddMessage2Log($optCnt);
 if ($optCnt==1)
 {
@@ -168,8 +163,17 @@ else if ($optCnt==0)
 {
     $filterExpr = "";
 }
-else
-    $filterExpr = "unchanged";
+else {
+    UrlFilter::ProcessFilterInRequest();
+    $filter = UrlFilter::GetFilter($_REQUEST['section_code']);
+    $filters = $GLOBALS["arrFilterAjaxSection"];
+
+    if (is_array($filters[$filter['query-name']]) && in_array($filter['value'],$filters[$filter['query-name']]))
+        $filterExpr = "unchanged";
+    else
+        //filter options are more than 1, but current url filter was unchecked
+        $filterExpr = "";
+}
 //AddMessage2Log($filterExpr);
 
 function GetFilterOptionsCount()
@@ -184,9 +188,23 @@ function GetFilterOptionsCount()
 }
 
 
+//======== Process sections (if in category of depth = 1)
+$htmlForSections="";
+if ($_REQUEST['is_root_section']) {
+    $propFilter = $GLOBALS["arrFilterAjaxSection"];
+    $sectionId = $_REQUEST['section_id'];
+    $arFilter = Array("IBLOCK_ID" => $arResult["IBLOCK_ID"], "SECTION_ID" => $sectionId);
+    $arFilter = array_merge($propFilter,$arFilter);
+    require_once($_SERVER["DOCUMENT_ROOT"] . "/include/Sections.php");
+    $nonEmptySections = Sections::GetNonEmpty3($arFilter);
+    $htmlForSections = Sections::GenerateMarkup($nonEmptySections);
+}
+//============================
+
 echo json_encode(
     array(
-        "html" => ($html) ? $html : "",
+        "html" => ($html) ? $html : "",     // elements
+        "sectionsHtml" => $htmlForSections, // sections
         "page" => ($page) ? $page : "",
         "showall" => $showAll,
         "nonEmptyProps" => $nonEmptyProps,
