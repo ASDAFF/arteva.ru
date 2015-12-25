@@ -1,5 +1,8 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 <?if ($arResult["ITEMS"]):?>
+    <?
+        include_once($_SERVER['DOCUMENT_ROOT'].'/include/getTitle_and_getAlt.php');
+    ?>
     <div class="outer-content-wrapper item-cross item-page-outer-posit" style="float:none; margin-left: auto; margin-right: auto;">
         <div class="content-wrapper">
             <p class="section-header">С этим товаром покупают</p>
@@ -12,9 +15,10 @@
                                     //$waterImage = waterImage($arItems["~PREVIEW_PICTURE"]);
                                     // $waterImage["src"]
                                     $waterImage["src"] = CFIle::GetPath($arItems["~PREVIEW_PICTURE"]);
+                                    AddMessage2Log($arItems["ID"], "/log/")
                                 ?>
                                 <div class="img-cnt">
-                                    <img src="/img/img_dummy.png" data-src="<?=$waterImage["src"]?>" alt=""/>
+                                    <img src="/img/img_dummy.png" data-src="<?=$waterImage["src"]?>" alt="<?=getAlt($arItems)?>" title="<?=getTitle($arItems)?>"/>
                                 </div>
                                 <div class="item-info">
                                     <p class="item-brand">Артикул <?=$arItems["PROPERTY_ARTIKUL_VALUE"]?></p>

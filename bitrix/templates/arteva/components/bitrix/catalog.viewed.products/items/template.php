@@ -7,6 +7,10 @@
             }
         }
     </style>
+    <?
+        include_once($_SERVER['DOCUMENT_ROOT'].'/include/getTitle_and_getAlt.php');
+    ?>
+
     <div class="outer-content-wrapper item-recent-viewed item-page-outer-posit" style="float:none;">
         <div class="content-wrapper">
             <p class="section-header">Вы недавно смотрели</p>
@@ -21,7 +25,7 @@
                                     $waterImage["src"] = CFIle::GetPath($arItems["~PREVIEW_PICTURE"]);
                                 ?>
                                 <div class="img-cnt">
-                                    <img src="/img/img_dummy.png" data-src="<?=$waterImage["src"]?>" alt=""/>
+                                    <img src="/img/img_dummy.png" data-src="<?=$waterImage["src"]?>" alt="<?=getAlt($arItems)?>" title="<?=getTitle($arItems)?>"/>
                                 </div>
                                 <div class="item-info">
                                     <p class="item-brand">Артикул <?=$arItems["PROPERTIES"]["ARTIKUL"]["VALUE"]?></p>

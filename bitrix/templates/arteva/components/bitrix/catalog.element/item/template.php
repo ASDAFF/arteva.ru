@@ -22,7 +22,10 @@
                 ?>
                 <li>
                     <a rel="gallery1" class="js-fbx-image js-zoom" href="<?=$waterImage["src"]?>">
-                        <img itemprop="image" src="<?=$waterImage["src"]?>" alt="<?=$arResult["PREVIEW_PICTURE"]["ALT"]?>" title="<?=$arResult["PREVIEW_PICTURE"]["TITLE"]?>"/>
+                        <?
+                            include_once($_SERVER['DOCUMENT_ROOT'].'/include/getTitle_and_getAlt.php');
+                        ?>
+                        <img itemprop="image" src="<?=$waterImage["src"]?>" alt="<?=getAlt($arResult)?>" title="<?=getTitle($arResult)?>"/>
                     </a>
                 </li>
             <?endforeach?>

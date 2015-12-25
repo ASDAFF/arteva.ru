@@ -3,6 +3,9 @@
     <?
         $firstElement = array_shift($arResult["ITEMS"]);
     ?>
+    <?
+        include_once($_SERVER['DOCUMENT_ROOT'].'/include/getTitle_and_getAlt.php');
+    ?>
     <div class="item-big js-item mainBlock" data-id="<?=$arItems["ID"]?>">
 		<div class="shadowBlockBottom" style="display:none;">
 			<input class="item-count js-item-count" value="1" type="text" name="item1-count" id="item1-count" style="display:none;" />			
@@ -17,7 +20,7 @@
                 $waterImage["src"] = CFIle::GetPath($firstElement["~PREVIEW_PICTURE"]);
             ?>
             <div class="img-cnt">
-                <img src="<?=$waterImage["src"]?>" alt="<?=$firstElement["NAME"]?>"/>
+                <img src="<?=$waterImage["src"]?>" alt="<?=getAlt($firstElement)?>" title="<?=getTitle($firstElement)?>"/>
             </div>
             <div class="item-info">
                 <div>
@@ -61,7 +64,7 @@
                     $waterImage["src"] = CFIle::GetPath($arItems["~PREVIEW_PICTURE"]);
                 ?>
     	        <div class="img-cnt">
-                    <img src="<?=$waterImage["src"]?>" alt=""/>
+                    <img src="<?=$waterImage["src"]?>" alt="<?=getAlt($arItems)?>" title="<?=getTitle($arItems)?>"/>
                 </div>
     	        <div class="item-info">
     	            <p class="item-name">Артикул <?=$arItems["PROPERTIES"]["ARTIKUL"]["VALUE"]?></p>
