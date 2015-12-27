@@ -65,20 +65,17 @@
                     <p class="old-price"><?=number_format($arResult["PRICES"]["BASE"]["VALUE"], 0, 0, " ")?> <span>руб.</span></p>
                 <?endif?>
 			<?}?>
-            </div>
 
-            <div class="right"">
                 <?
-                    $h_domain = $_SERVER['SERVER_NAME'];
-                ?>
-            <?
                 $brand = $arResult["PROPERTIES"]["BRAND"]["VALUE"][0];
                 $brand_name = str_replace(" ", "_", $brand);
-                echo '<a href="/brands/'.$brand_name.'/">'
-                    ."<img alt='$brand' title='$brand' style='width: 100px; height: 80px;' src='{$arResult['BRAND_LOGO']}'/>".
-                    '</a>';
-            ?>
+                ?>
+                <a href="/brands/<?=$brand_name?>/">
+                    <img alt='<?=$brand?>' title='<?=$brand?>' src='<?=$arResult['BRAND_LOGO']?>'/>
+                </a>
             </div>
+
+
         </div>
         <div class="badge-cnt">
             <?if ($arResult["PROPERTIES"]["HIT"]["VALUE"]):?>
