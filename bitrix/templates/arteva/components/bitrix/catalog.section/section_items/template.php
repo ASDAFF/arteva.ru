@@ -143,6 +143,7 @@
 					"CACHE_GROUPS" => "Y",
 					"ADD_SECTIONS_CHAIN" => "Y",
 					"FILTER_NAME" => $arParams['FILTER_NAME'],
+					"FILTER" => $GLOBALS[$arParams['FILTER_NAME']]
 				)
 			);?>
 	    </div>

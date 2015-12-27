@@ -3,12 +3,35 @@
 $sectionId = $arResult["SECTION"]["ID"];
 $iblockId =$arParams["IBLOCK_ID"];
 $arFilter = Array("ACTIVE"=>"Y", "IBLOCK_ID"=>$iblockId);
-
+$propFilter = $GLOBALS[$arParams["FILTER_NAME"]];
 $properties = CIBlockProperty::GetList(Array("sort"=>"asc", "name"=>"asc"), $arFilter);
 
 require_once($_SERVER["DOCUMENT_ROOT"]."/include/section_props.php");
-//AddMessage2Log($GLOBALS[$arParams["FILTER_NAME"]]);
-$nonEmptyProps = GetNonEmptyPropsValues($iblockId, $sectionId, array_merge($arFilter,$GLOBALS[$arParams["FILTER_NAME"]]));
+
+AddMessage2Log($propFilter);
+$nonEmptyPropsValues = GetNonEmptyPropsValues($iblockId, $sectionId, array_merge($arFilter,$propFilter));
+
+// count($GLOBALS[$arParams["FILTER_NAME"]]) can be 0 or 1
+if (count($propFilter)>0) {
+    // if filter by some property is set, then
+    // we should reset that filter to retrieve nonempty values of that prop
+    foreach ($propFilter as $key => $value) {
+        // we use foreach despite of the fact that $GLOBALS[$arParams["FILTER_NAME"]] can
+        // have at most 1 element because it is the one the fastest ways to get key and value
+
+        // get prop code
+        $start = strpos($key, '_')+1;
+        $end = strrpos($key,'_');
+        $propCode = substr($key, $start, $end-$start);
+
+
+        $valuesOfPropWithFilter = GetNonEmptyValuesForProp($iblockId, $sectionId, $propCode);
+        //AddMessage2Log($nonEmptyPropsValues);
+        //$nonEmptyPropsValues[$propCode] = array_merge($nonEmptyPropsValues[$propCode],$valuesOfPropWithFilter[$propCode]);
+        $nonEmptyPropsValues[$propCode] = $valuesOfPropWithFilter[$propCode];
+        AddMessage2Log($nonEmptyPropsValues);
+    }
+}
 
 while ($prop_fields = $properties->GetNext())
 {
@@ -18,8 +41,7 @@ while ($prop_fields = $properties->GetNext())
         {
             //AddMessage2Log('PROPERTY_'.$enum_fields['PROPERTY_CODE'].'_VALUE');
             //AddMessage2Log();
-            if (in_array('PROPERTY_'.$enum_fields['PROPERTY_CODE'].'_VALUE',array_keys($GLOBALS[$arParams["FILTER_NAME"]])) ||
-                in_array($enum_fields["VALUE"], $nonEmptyProps[$enum_fields["PROPERTY_CODE"]]))
+            if (in_array($enum_fields["VALUE"], $nonEmptyPropsValues[$enum_fields["PROPERTY_CODE"]]))
                 $prop_fields["ENUM_LIST"][] = $enum_fields;
         }
     endif;
