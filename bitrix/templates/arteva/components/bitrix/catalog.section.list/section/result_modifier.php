@@ -8,7 +8,7 @@ $properties = CIBlockProperty::GetList(Array("sort"=>"asc", "name"=>"asc"), $arF
 
 require_once($_SERVER["DOCUMENT_ROOT"]."/include/section_props.php");
 
-AddMessage2Log($propFilter);
+//AddMessage2Log($propFilter);
 $nonEmptyPropsValues = GetNonEmptyPropsValues($iblockId, $sectionId, array_merge($arFilter,$propFilter));
 
 // count($GLOBALS[$arParams["FILTER_NAME"]]) can be 0 or 1
@@ -29,7 +29,7 @@ if (count($propFilter)>0) {
         //AddMessage2Log($nonEmptyPropsValues);
         //$nonEmptyPropsValues[$propCode] = array_merge($nonEmptyPropsValues[$propCode],$valuesOfPropWithFilter[$propCode]);
         $nonEmptyPropsValues[$propCode] = $valuesOfPropWithFilter[$propCode];
-        AddMessage2Log($nonEmptyPropsValues);
+       // AddMessage2Log($nonEmptyPropsValues);
     }
 }
 
