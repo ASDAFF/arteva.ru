@@ -72,10 +72,10 @@
                     $h_domain = $_SERVER['SERVER_NAME'];
                 ?>
             <?
-                $brand_name = str_replace(" ", "_", $arResult["PROPERTIES"]["BRAND"]["VALUE"][0]);
-
-                echo '<a href="http://'.$h_domain.'/brands/'.$brand_name.'/">'
-                    ."<img  style='width: 100px; height: 80px;' src='{$arResult['BRAND_LOGO']}'/>".
+                $brand = $arResult["PROPERTIES"]["BRAND"]["VALUE"][0];
+                $brand_name = str_replace(" ", "_", $brand);
+                echo '<a href="/brands/'.$brand_name.'/">'
+                    ."<img alt='$brand' title='$brand' style='width: 100px; height: 80px;' src='{$arResult['BRAND_LOGO']}'/>".
                     '</a>';
             ?>
             </div>

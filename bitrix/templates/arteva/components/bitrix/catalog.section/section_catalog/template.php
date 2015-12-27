@@ -162,7 +162,7 @@
         <ul class="item-cards-list matrix">
         	<?foreach ($arResult["ITEMS"] as $key => $arItems) :?>
             <?
-                AddMessage2Log($arItems["PRICES"]["BASE"]["VALUE"], "/log/");
+                //AddMessage2Log($arItems["PRICES"]["BASE"]["VALUE"], "/log/");
             ?>
     	        <li class="item-card-item js-item" data-id="<?=$arItems["ID"]?>">
     	            <a href="<?=$arItems["DETAIL_PAGE_URL"]?>">

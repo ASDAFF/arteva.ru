@@ -33,7 +33,7 @@ endif;
 
 if(CModule::IncludeModule('iblock'))
 {
-	AddMessage2Log($arResult["PROPERTIES"]["BRAND"]["VALUE"][0], '/log/');
+	//AddMessage2Log($arResult["PROPERTIES"]["BRAND"]["VALUE"][0], '/log/');
 	$rsElement = CIBlockElement::GetList(
 			array(),
 			array("IBLOCK_ID"=>6,"NAME"=>$arResult["PROPERTIES"]["BRAND"]["VALUE"][0]),
