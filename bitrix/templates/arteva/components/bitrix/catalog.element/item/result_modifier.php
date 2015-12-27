@@ -39,14 +39,16 @@ if(CModule::IncludeModule('iblock'))
 			array("IBLOCK_ID"=>6,"NAME"=>$arResult["PROPERTIES"]["BRAND"]["VALUE"][0]),
 			false,
 			false,
-			array("PREVIEW_PICTURE","TITLE")
+			array('ID','PREVIEW_PICTURE')
 	);
 
 	if($arElement = $rsElement->Fetch())
 	{
-		AddMessage2Log($arElement);
+		//AddMessage2Log($arElement);
 		$arFile = CFile::GetFileArray($arElement["PREVIEW_PICTURE"]);
-		//AddMessage2Log($arFile);
+		$ipropValues = new Bitrix\Iblock\InheritedProperty\ElementValues(6, $arElement["ID"]);
+		$arElement["IPROPERTY_VALUES"] = $ipropValues->getValues();
+		AddMessage2Log($arElement);
 		if($arFile)
 			$arResult["BRAND_LOGO"] = $arFile["SRC"];
 	}
