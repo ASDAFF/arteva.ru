@@ -48,9 +48,16 @@ if(CModule::IncludeModule('iblock'))
 		$arFile = CFile::GetFileArray($arElement["PREVIEW_PICTURE"]);
 		$ipropValues = new Bitrix\Iblock\InheritedProperty\ElementValues(6, $arElement["ID"]);
 		$arElement["IPROPERTY_VALUES"] = $ipropValues->getValues();
-		AddMessage2Log($arElement);
-		if($arFile)
+		//$arElement["PREVIEW_PICTURE"]["TITLE"] = $arElement["IPROPERTY_VALUES"]["ELEMENT_PREVIEW_PICTURE_FILE_ALT"];
+		//AddMessage2Log($arElement, "/log/");
+		if($arFile) {
 			$arResult["BRAND_LOGO"] = $arFile["SRC"];
+		}
+
+		$arResult["BRAND_PREVIEW"]["PREVIEW_PICTURE"]["ALT"] = $arElement["IPROPERTY_VALUES"]["ELEMENT_PREVIEW_PICTURE_FILE_ALT"];
+		$arResult["BRAND_PREVIEW"]["PREVIEW_PICTURE"]["TITLE"] = $arElement["IPROPERTY_VALUES"]["ELEMENT_PREVIEW_PICTURE_FILE_TITLE"];
+		$arResult["BRAND_PREVIEW"]["NAME"] = $arResult["PROPERTIES"]["BRAND"]["VALUE"][0];
+		//AddMessage2Log($arResult["PROPERTIES"]["BRAND"], "/log/");
 	}
 }
 

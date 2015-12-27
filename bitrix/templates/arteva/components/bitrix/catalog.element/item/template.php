@@ -71,7 +71,7 @@
                 $brand_name = str_replace(" ", "_", $brand);
                 ?>
                 <a href="/brands/<?=$brand_name?>/" class="item-brand-logo">
-                    <img alt='<?=$brand?>' title='<?=$brand?>' src='<?=$arResult['BRAND_LOGO']?>'/>
+                    <img alt='<?=getAlt($arResult["BRAND_PREVIEW"])?>' title='<?=getTitle($arResult["BRAND_PREVIEW"])?>' src='<?=$arResult['BRAND_LOGO']?>'/>
                 </a>
             </div>
 
