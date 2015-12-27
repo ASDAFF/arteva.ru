@@ -116,11 +116,14 @@ class Sections
     {
         ob_start(); ?>
         <ul class="item-cards-list matrix categories">
+            <?
+                include_once($_SERVER['DOCUMENT_ROOT'].'/include/getTitle_and_getAlt.php');
+            ?>
             <?foreach ($sections as $key => $arSections) :?>
                 <li class="item-card-item">
                     <a href="<?=$arSections["SECTION_PAGE_URL"]?>">
                         <div class="img-cnt">
-                            <img src="/img/img_dummy.png" data-src="<?=CFIle::GetPath($arSections["~PICTURE"])?>" alt=""/></div>
+                            <img src="/img/img_dummy.png" data-src="<?=CFIle::GetPath($arSections["~PICTURE"])?>" alt="<?=getAlt($arSections)?>" title="<?=getTitle($arSections)?>"/></div>
                         <div class="item-info">
                             <p class="category"><?=$arSections["NAME"]?></p>
                         </div>

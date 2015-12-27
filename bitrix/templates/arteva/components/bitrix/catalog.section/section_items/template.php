@@ -147,6 +147,9 @@
 			);?>
 	    </div>
 	</div>
+	<?
+		include_once($_SERVER['DOCUMENT_ROOT'].'/include/getTitle_and_getAlt.php');
+	?>
 	<div class="outer-content-wrapper">
 	    <div class="content-wrapper">
 	        <div class="item-cards-list-cnt">
@@ -160,7 +163,7 @@
 			                        $waterImage["src"] = CFIle::GetPath($arItems["~PREVIEW_PICTURE"]);
 			                    ?>
 		                        <div class="img-cnt">
-		                        	<img src="/img/img_dummy.png" data-src="<?=$waterImage["src"]?>" alt=""/>
+		                        	<img src="/img/img_dummy.png" data-src="<?=$waterImage["src"]?>" alt="<?=getAlt($arItems)?>" title="<?=getTitle($arItems)?>"/>
 		                        </div>
 		                        <div class="item-info">
 		                            <p class="item-brand"><?=$arItems["NAME"]?></p>
