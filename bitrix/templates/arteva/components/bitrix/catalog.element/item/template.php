@@ -70,7 +70,7 @@
                 $brand = $arResult["PROPERTIES"]["BRAND"]["VALUE"][0];
                 $brand_name = str_replace(" ", "_", $brand);
                 ?>
-                <a href="/brands/<?=$brand_name?>/">
+                <a href="/brands/<?=$brand_name?>/" class="item-brand-logo">
                     <img alt='<?=$brand?>' title='<?=$brand?>' src='<?=$arResult['BRAND_LOGO']?>'/>
                 </a>
             </div>
