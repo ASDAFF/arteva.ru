@@ -13905,7 +13905,7 @@ filter: drop-shadow(-10px 10px 7px rgba(109,109,109,0.7));
 }
 
 
-img.item-brand-logo
+a.item-brand-logo img
 {
   margin-top: 7px;
 }
