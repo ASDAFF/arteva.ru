@@ -213,6 +213,27 @@ function objectToArray($object)
 
 define("LOG_FILENAME",$_SERVER["DOCUMENT_ROOT"]."/log/log_".date("Ymd").".log");
 
+function GetUrlType($URL) {
+	$sections = explode("/", $URL);
+	$len = count($sections);
+
+	$URL_TYPE = -1;
+	if (isValidSectionCodePath($sections)) { //Случай с пустым массивом тоже здесь учтён
+		$URL_TYPE = 0;
+	} elseif (GetBrandByXmlId($sections[$len - 1]) != false && isValidSectionCodePath(array_slice($sections, 0, $len - 1))) {
+		$URL_TYPE = 1;
+	} elseif ($sections[0] == "new" && isValidSectionCodePath(array_slice($sections, 1))) {
+		$URL_TYPE = 2;
+	} elseif ($sections[0] == "sale" && isValidSectionCodePath(array_slice($sections, 1))) {
+		$URL_TYPE = 3;
+	} elseif ($sections[0] == "brands" && $len == 1) {
+		$URL_TYPE = 4;
+	} elseif ($len == 2 && $sections[0] == "brands" && GetBrandByXmlId($sections[1]) != false) {
+		$URL_TYPE = 5;
+	}
+
+	return $URL_TYPE;
+}
 
 function GetBrandByXmlId ($xmlid) {
 	$BRANDS_QUERY = CIBlockPropertyEnum::GetList(
